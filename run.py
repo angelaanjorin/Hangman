@@ -1,6 +1,6 @@
 
 import random
-word_list = ["amsterdam", "Barcelona", "Helsinki"]
+word_list = ["amsterdam", "barcelona", "helsinki"]
 chosen_word = random.choice(word_list)
 
 #Testing code
@@ -12,8 +12,10 @@ for _ in range(word_length):
     display += "_"
 
 guess = input("Guess a letter: ").lower()
-for letter in chosen_word:
+for position in range(word_length):
+    letter = chosen_word[position]
+    print(f"current position: {position}\n current letter: {letter}\n guessed letter: {guess}")
     if letter == guess:
-        print("right")
-    else:
-        print("Wrong")
+        display[position] = letter
+
+print(display)
