@@ -1,3 +1,14 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+
+import random
+word_list = ["amsterdam", "Barcelona", "Helsinki"]
+chosen_word = random.choice(word_list)
+
+#Testing code
+print(f'The chosen word is {chosen_word}.')
+
+guess = input("Guess a letter: ").lower()
+for letter in chosen_word:
+    if letter == guess:
+        print("right")
+    else:
+        print("Wrong")
