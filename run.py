@@ -2,6 +2,12 @@
 import awoc
 import random
 import os
+import datetime
+import colorama
+from colorama import Fore
+colorama.init(autoreset = True)
+from hangman_typing import *
+from hangman_art import *
 
 # to clean screen after each loop with change
 def clean():
@@ -16,6 +22,7 @@ my_world = awoc.AWOC()
 nations_of_europe = my_world.get_countries_list_of ('Europe')
 chosen_nation = random.choice(nations_of_europe).lower()
 word_length = len(chosen_nation)
+#print(nations_of_europe)
 
 end_of_game = False
 lives = 6
@@ -23,9 +30,11 @@ lives = 6
 wrong_letter_list = []
 
 #import logo
-from hangman_art import logo
-print(logo)
-
+#from hangman_art import logo
+print(f'{Fore.GREEN} {logo}')
+typewriter ("""Y O U  A R E  B R A V E   T O  P L A Y\t\nT H I S   G A M E   B Y   T H E   W A Y ! !
+\t\n\nG O O D   L U C K ! !\n
+""")
 
 #Testing code
 print(f'Pssst...The chosen nation is {chosen_nation}.')
