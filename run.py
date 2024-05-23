@@ -2,9 +2,15 @@
 import awoc
 import random
 import os
-#clear = lambda: os.system('cls') #on Windows System
-#j
-#os.system('clear') #on Linux System
+
+# to clean screen after each loop with change
+def clean():
+#on Windows System
+    if os.name == 'nt':
+        os.system('cls')
+# on macOS and Linux System
+    else:
+        os.system('clear') 
 
 my_world = awoc.AWOC()
 nations_of_europe = my_world.get_countries_list_of ('Europe')
@@ -34,7 +40,7 @@ while not end_of_game:
     if wrong_letter_list != []:
         print(f'Wrong letters: {wrong_letter_list}')
     guess = input("Guess a letter: ").lower()
-    #clear()
+    clean()
 
     #prompts for already guessed letter
     if guess in display:
