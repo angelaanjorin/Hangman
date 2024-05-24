@@ -1,6 +1,6 @@
 import random
 
-word_list[
+word_list = [
     "Lisbon",
     "Barcelona",
     "Prague",
@@ -56,4 +56,4 @@ word_list[
 """
 def get_word ():
     chosen_word = random.choice(word_list)
-    return chosen.word.lower()
+    return chosen_word.lower()
