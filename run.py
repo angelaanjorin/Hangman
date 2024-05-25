@@ -45,7 +45,42 @@ FULL_WORD_SCORE = 50
 
 #import logo
 #from hangman_art import logo
+def welcome_message():
+    """Prints the welcome message
+    """
 print(f'{Fore.GREEN} {logo}')
+typewriter (""" W E L C O M E   T O  T H E  H A N G M A N  G A M E ! !\n """)
+print(f"{Fore.CYAN} HERE ARE THE RULES: {game_info[0]}")
+
+play_game = True
+while True:
+    if play_game:
+        chosen_word = random.choice(word_list).lower()
+    user-input == input("Do you want to play? Y/N\n").lower()
+    if play_game == "y":
+        print(f"{Fore.GREEN} GREAT LET`S PLAY!\n")
+        play_game = True
+    elif play_game == "n":
+        print(f"{Fore.YELLOW} OKAY, MAYBE NEXT TIME!")
+        sys.exit()
+    else:
+        print(f"{Fore.RED}Invalid input. Please try again")
+        play_game = False
+if __name__ == '__main__':
+    while True:
+        player_name = input(f"{Fore.CYAN}YOUR NAME:").strip().lower()
+        if len(player_name) == 0:
+            print(f"{Fore.RED}Invalid input!")
+            continue
+        else:
+            break
+    while True:
+        player_city = input(f"{Fore.CYAN}YOUR CITY:").strip().lower()
+        if len(player_name) == 0:
+            print(f"{Fore.RED}Invalid input!")
+            continue
+        else:
+            break
 typewriter ("""Y O U  A R E  B R A V E   T O  P L A Y\t\nT H I S   G A M E   B Y   T H E   W A Y ! !
 \t\n\nG O O D   L U C K ! !\n
 """)
@@ -61,7 +96,7 @@ def clean():
 
 #my_world = awoc.AWOC()
 #nations_of_europe = my_world.get_countries_list_of ('Europe')
-chosen_word = random.choice(word_list).lower()
+#chosen_word = random.choice(word_list).lower()
 #get_word ()
 
 #Testing code
