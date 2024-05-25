@@ -11,7 +11,7 @@ SCOPE = [
 
 import random
 import os
-import datetime
+#import datetime
 
 import colorama
 from colorama import Fore
