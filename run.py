@@ -21,7 +21,7 @@ from hangman_typing import *
 from hangman_art import *
 from hangman_words import word_list
 
-#CONTS
+#CONSTS
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
@@ -31,7 +31,17 @@ scores = SHEET.worksheet('scores')
 
 data = scores.get_all_values()
 
-print(data)
+#print(data)
+CORRECT_LETTER_SCORE = 5
+EXTRA_SCORE = 20
+FULL_WORD_SCORE = 50
+
+
+#Collect name and city from the user
+#Add date and time to scores
+#Add the calculated scores from end of game to scores
+#Retrieve and show user thier scores
+# Ask user if they want to see the top five scored users
 
 #import logo
 #from hangman_art import logo
@@ -69,18 +79,23 @@ def word_dash(word_length):
 correct_letters = []
 guessed_word = []
 wrong_letter_list = []
+guessed_right = 0
+score = 0
 end_of_game = False
 attempts = 6
 
 print(f"""{Fore.YELLOW}YOU HAVE TO GUESS A WORD WITH {len(chosen_word)} LETTERS""")
+print('\n')
 word_dash(word_length)
 print("\n")
 
 while not end_of_game:
     if wrong_letter_list != []:
-        print(f'Wrong letters: {wrong_letter_list}')
+        print(f'{Fore.RED}Wrong letters: {wrong_letter_list}')
+        print('\n')
     guess = input("Guess a letter: ").lower()
     clean()
+
     if len(guess) == 1 and guess.isalpha():
     #prompts for already guessed letter
         if guess in word_length:
@@ -88,6 +103,9 @@ while not end_of_game:
 
         elif guess in chosen_word:
             print(f"Great, {guess} is in the word!")
+            correct_letters.append(guess)
+            guessed_right += 1
+            score += CORRECT_LETTER_SCORE
 
             
         #check guessed letter
@@ -101,6 +119,7 @@ while not end_of_game:
         if "_" not in word_as_list:
             end_of_game = True
             print("You win!")
+
         #for position in range(word_length):
             #letter = chosen_word[position]
             #print(f"current position: {position}\n current letter: {letter}\n guessed letter: {guess}")
@@ -125,6 +144,7 @@ while not end_of_game:
         if guess == chosen_word:
             end_of_game = True
             print(f"""{Fore.YELLOW}\n Whoohh,You have guessed the word {guess} already!!!\n You Win!!\n""")
+            score += FULL_WORD_SCORE
 
         elif guess in guessed_word:
             print(f"{Fore.RED}\n\t You´ve already guessed {guess} wrongly")
@@ -143,10 +163,10 @@ while not end_of_game:
     #print(f"{' '.join(word_as_list)}")
     word_dash(word_length)
     print("\n")
-
     print(f'Attempts left: {attempts}')
+    #print("\n")
+    print(f"Score: {score}")
     
-
 
     #import stages of hangman
     from hangman_art import stages
