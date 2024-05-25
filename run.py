@@ -1,14 +1,37 @@
 
 #import awoc
+import gspread
+from google.oauth2.service_account import Credentials
+
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+    ]
+
 import random
 import os
 import datetime
+
 import colorama
 from colorama import Fore
 colorama.init(autoreset = True)
+
 from hangman_typing import *
 from hangman_art import *
 from hangman_words import word_list
+
+#CONTS
+CREDS = Credentials.from_service_account_file('creds.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open('hangman_leaderboard')
+
+scores = SHEET.worksheet('scores')
+
+data = scores.get_all_values()
+
+print(data)
 
 #import logo
 #from hangman_art import logo
