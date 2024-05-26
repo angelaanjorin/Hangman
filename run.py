@@ -14,7 +14,7 @@ import os
 
 import datetime
 date = datetime.datetime.today()
-today_date = date.strftime("%d/%m/%y")
+today_date = date.strftime("%d/%m/%Y")
 
 
 import colorama
@@ -261,7 +261,7 @@ def update_worksheet(data):
     print("Updating Leaderboard...\n")
     worksheet_to_update = SHEET.worksheet('scores')
     worksheet_to_update.append_row([
-         str(player_name[0:10]), player_city])
+         str(player_name[0:10]), player_city, today_date])
     
     print('Leaderboard Updated.\n')
 update_worksheet(data)
