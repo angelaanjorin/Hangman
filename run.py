@@ -34,11 +34,15 @@ SHEET = GSPREAD_CLIENT.open('hangman_leaderboard')
 scores = SHEET.worksheet('scores')
 data = scores.get_all_values()
 
-CORRECT_LETTER_SCORE = 5
-EXTRA_SCORE = 50
+CORRECT_LETTER_SCORE = 10
+EXTRA_SCORE = 100
 FULL_WORD_SCORE = 500
 score = 0
-
+repeat_message = f"""{Fore.CYAN}
+A - PLAY AGAIN
+B - LEADERBOARD
+C - EXIT GAME
+"""
 # Retrieve and show user thier scores
 # Ask user if they want to see the top five scored users
 
@@ -51,19 +55,6 @@ def welcome_message():
     #print(f"{Fore.CYAN} HERE ARE THE RULES: {game_info[0]}")
     #print(input("Press enter to start the game\n"))
     #clean()
-    #while True:
-        #if play_game:
-            #chosen_word = random.choice(word_list).lower()
-        #play_game == input("Do you want to play? Y/N\n").lower()
-        #if play_game == "y":
-            #print(f"{Fore.GREEN} GREAT LET`S PLAY!\n")
-        # play_game = True
-        #elif play_game == "n":
-            #print(f"{Fore.YELLOW} OKAY, MAYBE NEXT TIME!")
-            #sys.exit()
-        #else:
-            #print(f"{Fore.RED}Invalid input. Please try again")
-            #play_game = False
 
     #Collect user´s name and city       
     if __name__ == '__main__':
@@ -151,10 +142,8 @@ def play_game(chosen_word):
             if "_" not in word_as_list:
                 end_of_game = True
                 print("You win!")
-                print(f"The word was {chosen_word}")
-                #print(f"Score:{score}")
-                #repeat_game()
-
+                score += EXTRA_SCORE
+                
             #check if letter is wrong.
             if guess in wrong_letter_list:
                 print(f"You´ve already guessed {guess} wrongly")
@@ -168,7 +157,7 @@ def play_game(chosen_word):
                     end_of_game = True
                     print("You lose.")
                     print(f"The word was {chosen_word}")
-                    #repeat_game()
+                
 
         #check for word inputs
         elif len(guess) >= 2  and guess.isalpha():
@@ -176,8 +165,7 @@ def play_game(chosen_word):
                 end_of_game = True
                 print(f"""{Fore.YELLOW}\n Whoohh,You have guessed the word {guess} already!!!\n You Win!!\n""")
                 score += FULL_WORD_SCORE - score
-                #print(f"Score:{score}")
-                #repeat_game()
+                
             elif guess in guessed_word:
                 print(f"{Fore.RED}\n\t You´ve already guessed {guess} wrongly")
             
@@ -204,20 +192,6 @@ def play_game(chosen_word):
         from hangman_art import stages
         print(stages[attempts])
     update_worksheet(data, player_name, player_city, today_date, score)
-#play_game(chosen_word)
-#         #final_score(end_of_game, chosen_word, guessed_right, score)
-
-# # def final_score(end_of_game, chosen_word, guessed_right, score):
-# #     if end_of_game and len(chosen_word) >= 6 and guessed_right <=3:
-# #         print("You win, You have guessed the word completely at once!\n")
-# #         score = score + EXTRA_SCORE + FULL_WORD_SCORE
-# #     elif end_of_game:
-# #         print("You win, You have guessed the right word!\n")
-# #         score = score + EXTRA_SCORE
-# #     else:
-# #         print(f"You lose, the right word was {chosen_word}\n")
-# #     #update_worksheet(data, score)
-# #     display_score(score)
 
 def get_word():
     """get a word for the game randomly from the word list and make it lowercase.
@@ -231,20 +205,26 @@ def repeat_game():
     """Asks the user if they want to play again or not.
     """
     while end_of_game == True:
-        game = input('Are you ready to play again? Y(es) or N(o)\n').upper()
-        if game == 'Y':
+        user_choice = input(f'{repeat_message}>>>').upper()
+        if user_choice == 'A':
             clean()
+            print(f'{player_name.capitalize()}, ohh whoh you have choosen to continue playing!')
             chosen_word = random.choice(word_list).lower()
             #print(f"Score:{score}")
             play_game(chosen_word)
-            display_score(score)
-        elif game == 'N':
+            #display_score(score)
+        elif user_choice == 'B':
+            clean()
+            print('Here are the scores of the best 5 players... ')
+            display_leaderboard()
+            
+        elif user_choice == 'C':
             print('Goodbye!')
             sys.exit()
         else:
             print('Please enter a valid answer')
-    repeat_game()
-
+            repeat_game()
+        
 
 def display_score(score):
     """Displays the user´s score during the game
@@ -254,20 +234,29 @@ def display_score(score):
 
 #Add the endscores from end of game and other data from user to worksheet(scores)
 def update_worksheet(data, player_name, player_city, today_date, score):
-    
+    """To append the data from the player to the google worksheet
+    """
     print("Updating Leaderboard...\n")
     worksheet_to_update = SHEET.worksheet('scores')
     worksheet_to_update.append_row([str(player_name[0:10]), player_city, today_date, score])
     
     print('Leaderboard Updated.\n')
 
-    #print(data)
+#displaying the data in worksheet to user
+def display_leaderboard():
+    """To retrieve the data from google sheet and display to user
+    """
+    print("Getting data....")
+    scores = SHEET.worksheet("scores").get_all_values()
+    scores_row = scores[-1]
+    print(scores_row)
+
 
 #Main function
 def main():
+    """Main Function
+    """
     welcome_message()
     play_game(chosen_word)
-    #final_score(end_of_game, chosen_word, guessed_right, score)
-    #update_worksheet(data, player_name, player_city, today_date, score)
     repeat_game()
 main()
