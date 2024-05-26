@@ -23,6 +23,7 @@ colorama.init(autoreset = True)
 from hangman_typing import *
 from hangman_art import *
 from hangman_words import word_list
+chosen_word = random.choice(word_list).lower()
 
 #CONSTS
 CREDS = Credentials.from_service_account_file('creds.json')
@@ -38,7 +39,7 @@ EXTRA_SCORE = 50
 FULL_WORD_SCORE = 500
 score = 0
 
-#Retrieve and show user thier scores
+# Retrieve and show user thier scores
 # Ask user if they want to see the top five scored users
 
 def welcome_message():
@@ -95,7 +96,7 @@ def clean():
     else:
         os.system('clear') 
 
-chosen_word = random.choice(word_list).lower()
+#chosen_word = random.choice(word_list).lower()
 # #get_word ()
 def play_game(chosen_word):
     #Testing code
@@ -112,6 +113,7 @@ def play_game(chosen_word):
     wrong_letter_list = []
     guessed_right = 0
     score = 0
+    global end_of_game 
     end_of_game = False
     attempts = 6
 
@@ -165,7 +167,7 @@ def play_game(chosen_word):
                 if attempts == 0:
                     end_of_game = True
                     print("You lose.")
-                    #print(f"The word was {chosen_word}")
+                    print(f"The word was {chosen_word}")
                     #repeat_game()
 
         #check for word inputs
@@ -217,29 +219,37 @@ def play_game(chosen_word):
 # #     #update_worksheet(data, score)
 # #     display_score(score)
 
-
+def get_word():
+    """get a word for the game randomly from the word list and make it lowercase.
+    """
+    global chosen_word
+    chosen_word = random.choice(word_list)
+    return chosen_word.lower()
 
 #Repeat game      
 def repeat_game():
     """Asks the user if they want to play again or not.
     """
-    game = input('Are you ready to play again? Y(es) or N(o)\n').upper()
-    if game == 'Y':
-        clean()
-        #print(f"Score:{score}")
-        play_game(chosen_word)
-    elif game == 'N':
-        print('Goodbye!')
-        sys.exit()
-    else:
-        print('Please enter a valid answer')
-        repeat_game()
+    while end_of_game == True:
+        game = input('Are you ready to play again? Y(es) or N(o)\n').upper()
+        if game == 'Y':
+            clean()
+            chosen_word = random.choice(word_list).lower()
+            #print(f"Score:{score}")
+            play_game(chosen_word)
+            display_score(score)
+        elif game == 'N':
+            print('Goodbye!')
+            sys.exit()
+        else:
+            print('Please enter a valid answer')
+    repeat_game()
 
 
-# def display_score(score):
-#     """Displays the user´s score during the game
-#     """
-#     print(f"\tSCORE: {score}")
+def display_score(score):
+    """Displays the user´s score during the game
+    """
+    print(f"\tSCORE: {score}")
 
 
 #Add the endscores from end of game and other data from user to worksheet(scores)

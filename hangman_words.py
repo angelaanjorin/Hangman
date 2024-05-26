@@ -36,7 +36,7 @@ word_list = [
     "Bratislava",
     "Ljubljana",
     "Luxembourg",
-    "Monaca",
+    "Monaco",
     "Nicosia",
     "Nuuk",
     "Oslo",
