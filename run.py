@@ -246,7 +246,7 @@ def update_worksheet(data, player_name, player_city, today_date, score):
     print('Leaderboard Updated.\n')
 
 #displaying the data in worksheet to user
-def display_leaderboard():
+def display_player_score():
     """To retrieve the data from google sheet and display to user
     """
     print("Getting data....")
@@ -254,6 +254,25 @@ def display_leaderboard():
     scores_row = scores[-1]
     print(scores_row)
 
+def display_leaderboard():
+    """to sort the score sheet according to score column 
+    in ascending order and displaying the last five.
+    """
+    scores = SHEET.worksheet('scores')
+    columns =[]
+    for ind in range(1,5):
+        column = scores.col_values(ind)
+        columns.append(column)[-5]
+        print(columns)
+
+        
+def sort_sheet():
+    scores = SHEET.worksheet('scores')
+
+    sorted_col_list = []
+    sorted_col = scores.sort((4, 'asc'), range = 'A2:D92')
+    sorted_list.append(sorted_col)
+    print(f'Leaderboard: {sorted_col_list}')
 
 #Main function
 def main():
