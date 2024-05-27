@@ -1,29 +1,25 @@
 import gspread
 from google.oauth2.service_account import Credentials
+import random
+import os
+#Add date to google worksheet
+import datetime
+date = datetime.datetime.today()
+today_date = date.strftime("%d/%m/%Y")
+#Add color to text 
+import colorama
+from colorama import Fore
+colorama.init(autoreset = True)
+from hangman_typing import *
+from hangman_art import *
+from hangman_words import word_list
+chosen_word = random.choice(word_list).lower()
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
     ]
-
-import random
-import os
-
-#Add date to google worksheet
-import datetime
-date = datetime.datetime.today()
-today_date = date.strftime("%d/%m/%Y")
-
-#Add color to text 
-import colorama
-from colorama import Fore
-colorama.init(autoreset = True)
-
-from hangman_typing import *
-from hangman_art import *
-from hangman_words import word_list
-chosen_word = random.choice(word_list).lower()
 
 #CONSTS
 CREDS = Credentials.from_service_account_file('creds.json')
@@ -37,7 +33,6 @@ data = scores.get_all_values()
 CORRECT_LETTER_SCORE = 10
 EXTRA_SCORE = 100
 FULL_WORD_SCORE = 500
-score = 0
 repeat_message = f"""{Fore.CYAN}
 A - PLAY AGAIN
 B - LEADERBOARD
@@ -47,9 +42,9 @@ C - EXIT GAME
 # Ask user if they want to see the top five scored users
 
 def welcome_message():
+    global player_name, player_city
     """Collect User´s name and city and set them as global variables so that they can be called in another funtion.
     """
-    global player_name, player_city
     #print(f'{Fore.GREEN} {logo}')
     #typewriter (""" W E L C O M E   T O  T H E  H A N G M A N  G A M E ! !\n """)
     #print(f"{Fore.CYAN} HERE ARE THE RULES: {game_info[0]}")
@@ -94,20 +89,17 @@ def play_game(chosen_word):
     print(f'{Fore.LIGHTMAGENTA_EX}Pssst...The chosen nation is {chosen_word}.')
 
     word_length = "_"  * len(chosen_word)
-    #create blanks
-    def word_dash(word_length):
-        for i in word_length:
-            print(i, end=" ")
+    #create blank
     
     correct_letters = []
     guessed_word = []
     wrong_letter_list = []
     guessed_right = 0
     score = 0
+    attempts = 6
     global end_of_game 
     end_of_game = False
-    attempts = 6
-
+   
     print(f"""{Fore.YELLOW}YOU HAVE TO GUESS A WORD WITH {len(chosen_word)} LETTERS""")
     print('\n')
     word_dash(word_length)
@@ -130,13 +122,9 @@ def play_game(chosen_word):
                 correct_letters.append(guess)
                 guessed_right += 1
                 score += CORRECT_LETTER_SCORE
-   
-            #check guessed letter
-            word_as_list = list(word_length)
-            indices = [i for i, letter in enumerate(chosen_word) if letter == guess]
-            for index in indices:
-                word_as_list[index] = guess
-            word_length = "".join(word_as_list)
+
+            #Make chosen word to a list
+            create_wordlist()
 
             #check if user has got all letters.End of game.
             if "_" not in word_as_list:
@@ -158,7 +146,6 @@ def play_game(chosen_word):
                     print("You lose.")
                     print(f"The word was {chosen_word}")
                 
-
         #check for word inputs
         elif len(guess) >= 2  and guess.isalpha():
             if guess == chosen_word:
@@ -181,7 +168,7 @@ def play_game(chosen_word):
         else:
             print(f"{Fore.RED}\n\t INVALID INPUT!\n")
 
-        #print(f"{' '.join(word_as_list)}")
+        
         word_dash(word_length)
         print("\n")
         print(f'Attempts left: {attempts}')
@@ -199,6 +186,22 @@ def get_word():
     global chosen_word
     chosen_word = random.choice(word_list)
     return chosen_word.lower()
+
+def word_dash(word_length):
+    """print out empty spaces for the letters of chosen word
+    """
+    for i in word_length:
+        print(i, end=" ")
+
+
+def create_wordlist():
+    """creates a list for the number of letters in the chosen word.
+    """
+    word_as_list = list(word_length)
+    indices = [i for i, letter in enumerate(chosen_word) if letter == guess]
+    for index in indices:
+        word_as_list[index] = guess
+    word_length = "".join(word_as_list)
 
 #Repeat game      
 def repeat_game():
@@ -220,7 +223,7 @@ def repeat_game():
             
         elif user_choice == 'C':
             print('Goodbye!')
-            sys.exit()
+            os.sys.exit()
         else:
             print('Please enter a valid answer')
             repeat_game()
