@@ -22,6 +22,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hangman_leaderboard')
 scores = SHEET.worksheet('scores')
 data = scores.get_all_values()
+
 CORRECT_LETTER_SCORE = 10
 EXTRA_SCORE = 100
 FULL_WORD_SCORE = 500
@@ -31,8 +32,8 @@ B - LEADERBOARD
 C - EXIT GAME
 """
 chosen_word = random.choice(word_list).lower()
-global word_length 
-word_length = "_"  * len(chosen_word)
+word_length = len(chosen_word)
+
 #Add date to google worksheet
 date = datetime.datetime.today()
 today_date = date.strftime("%d/%m/%Y")
@@ -85,7 +86,8 @@ def play_game(chosen_word):
     print(f'{Fore.LIGHTMAGENTA_EX}Pssst...The chosen nation is {chosen_word}.')
 
     #create blank
-    
+    word_length = "_" * len(chosen_word)
+
     correct_letters = []
     guessed_word = []
     wrong_letter_list = []
@@ -97,7 +99,7 @@ def play_game(chosen_word):
    
     print(f"""{Fore.YELLOW}YOU HAVE TO GUESS A WORD WITH {len(chosen_word)} LETTERS""")
     print('\n')
-    word_dash()
+    word_dash(word_length)
     print("\n")
 
     while not end_of_game:
@@ -109,7 +111,7 @@ def play_game(chosen_word):
 
         if len(guess) == 1 and guess.isalpha():
         #prompts for already guessed letter
-            if guess in correct_letters:
+            if guess in word_length:
                 print(f"You´ve already guessed {guess} correctly")
 
             elif guess in chosen_word:
@@ -119,7 +121,11 @@ def play_game(chosen_word):
                 score += CORRECT_LETTER_SCORE
 
             #Make chosen word to a list
-            create_wordlist()
+            word_as_list = list(word_length)
+            indices = [i for i, letter in enumerate(chosen_word) if letter == guess]
+            for index in indices:
+                word_as_list[index] = guess
+            word_length = "".join(word_as_list)
 
             #check if user has got all letters.End of game.
             if "_" not in word_as_list:
@@ -164,7 +170,7 @@ def play_game(chosen_word):
             print(f"{Fore.RED}\n\t INVALID INPUT!\n")
 
         
-        word_dash()
+        word_dash(word_length)
         print("\n")
         print(f'Attempts left: {attempts}')
         #print("\n")
@@ -176,29 +182,13 @@ def play_game(chosen_word):
     update_worksheet(data, player_name, player_city, today_date, score)
     repeat_game()
 
-def get_word():
-    """get a word for the game randomly from the word list and make it lowercase.
-    """
-    global chosen_word
-    chosen_word = random.choice(word_list)
-    return chosen_word.lower()
 
-def word_dash():
+
+def word_dash(word_length):
     """print out empty spaces for the letters of chosen word
     """
-    global word_length
-    word_length = "_"  * len(chosen_word)
     for i in word_length:
         print(i, end=" ")
-
-def create_wordlist():
-    """creates a list for the number of letters in the chosen word.
-    """
-    word_as_list = list(word_length)
-    indices = [i for i, letter in enumerate(chosen_word) if letter == guess]
-    for index in indices:
-        word_as_list[index] = guess
-    word_length = "".join(word_as_list)
 
 #Repeat game      
 def repeat_game():
