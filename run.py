@@ -2,18 +2,12 @@ import gspread
 from google.oauth2.service_account import Credentials
 import random
 import os
-#Add date to google worksheet
 import datetime
-date = datetime.datetime.today()
-today_date = date.strftime("%d/%m/%Y")
-#Add color to text 
 import colorama
 from colorama import Fore
-colorama.init(autoreset = True)
 from hangman_typing import *
 from hangman_art import *
 from hangman_words import word_list
-
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -26,10 +20,8 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hangman_leaderboard')
-
 scores = SHEET.worksheet('scores')
 data = scores.get_all_values()
-
 CORRECT_LETTER_SCORE = 10
 EXTRA_SCORE = 100
 FULL_WORD_SCORE = 500
@@ -41,11 +33,13 @@ C - EXIT GAME
 chosen_word = random.choice(word_list).lower()
 global word_length 
 word_length = "_"  * len(chosen_word)
-# Retrieve and show user thier scores
-# Ask user if they want to see the top five scored users
+#Add date to google worksheet
+date = datetime.datetime.today()
+today_date = date.strftime("%d/%m/%Y")
+#Add color to text 
+colorama.init(autoreset = True)
 
-def welcome_message():
-    
+def welcome_message(): 
     """Collect User´s name and city and set them as global variables so that they can be called in another funtion.
     """
     global player_name, player_city
@@ -86,8 +80,6 @@ def clean():
     else:
         os.system('clear') 
 
-#chosen_word = random.choice(word_list).lower()
-# #get_word ()
 def play_game(chosen_word):
     #Testing code
     print(f'{Fore.LIGHTMAGENTA_EX}Pssst...The chosen nation is {chosen_word}.')
@@ -182,6 +174,7 @@ def play_game(chosen_word):
         from hangman_art import stages
         print(stages[attempts])
     update_worksheet(data, player_name, player_city, today_date, score)
+    repeat_game()
 
 def get_word():
     """get a word for the game randomly from the word list and make it lowercase.
@@ -197,7 +190,6 @@ def word_dash():
     word_length = "_"  * len(chosen_word)
     for i in word_length:
         print(i, end=" ")
-
 
 def create_wordlist():
     """creates a list for the number of letters in the chosen word.
@@ -231,26 +223,28 @@ def repeat_game():
             os.sys.exit()
         else:
             print('Please enter a valid answer')
-            repeat_game()
-        
+    
 
 def display_score(score):
     """Displays the user´s score during the game
     """
     print(f"\tSCORE: {score}")
 
+def update_score(data):
+    """Update the players score for every game played
+    """
+    username_list = []
 
 #Add the endscores from end of game and other data from user to worksheet(scores)
 def update_worksheet(data, player_name, player_city, today_date, score):
-    """To append the data from the player to the google worksheet
-    """
+    """Append the data from the player to the google worksheet."""
     print("Updating Leaderboard...\n")
     worksheet_to_update = SHEET.worksheet('scores')
     worksheet_to_update.append_row([str(player_name[0:10]), player_city, today_date, score])
     
     print('Leaderboard Updated.\n')
 
-#displaying the data in worksheet to user
+# Retrieve and show user thier scores
 def display_player_score():
     """To retrieve the data from google sheet and display to user
     """
@@ -259,18 +253,17 @@ def display_player_score():
     scores_row = scores[-1]
     print(scores_row)
 
+# Show user the top five scored users
 def display_leaderboard():
-    """to sort the score sheet according to score column 
-    in ascending order and displaying the last five.
-    """
+    """ To sort the score sheet according to score column 
+    in ascending order and display top five Players."""
     scores = SHEET.worksheet('scores')
-    columns =[]
-    for ind in range(1,5):
-        column = scores.col_values(ind)
-        columns.append(column[-5])
-        print(columns)
+    all_data = scores.get_all_values()
+    sorted_data = sorted(all_data[1:], key=lambda x: int(x[3]), reverse=True)[:5]
+    for row in sorted_data:
+        print(row)
 
-
+# Sort the worksheet using the score columm in acsending order
 def sort_sheet():
     scores = SHEET.worksheet('scores')
 
@@ -281,9 +274,10 @@ def sort_sheet():
 
 #Main function
 def main():
-    """Main Function
-    """
+    """Main Function."""
     welcome_message()
     play_game(chosen_word)
     repeat_game()
-main()
+
+if __name__ == '__main__':
+    main()
