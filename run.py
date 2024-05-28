@@ -83,7 +83,7 @@ def clean():
 
 def play_game(chosen_word):
     #Testing code
-    print(f'{Fore.LIGHTMAGENTA_EX}Pssst...The chosen nation is {chosen_word}.')
+    print(f'{Fore.LIGHTMAGENTA_EX}Pssst...The chosen word is {chosen_word}.')
 
     #create blank
     word_length = "_" * len(chosen_word)
@@ -173,15 +173,13 @@ def play_game(chosen_word):
         word_dash(word_length)
         print("\n")
         print(f'Attempts left: {attempts}')
-        #print("\n")
         print(f"Score: {score}")
 
         #import stages of hangman
         from hangman_art import stages
         print(stages[attempts])
-    update_worksheet(data, player_name, player_city, today_date, score)
+    update_worksheet(player_name, player_city, today_date, score)
     repeat_game()
-
 
 
 def word_dash(word_length):
@@ -215,33 +213,49 @@ def repeat_game():
             print('Please enter a valid answer')
     
 
-def display_score(score):
-    """Displays the user´s score during the game
-    """
-    print(f"\tSCORE: {score}")
+# def display_score(score):
+#     """Displays the user´s score during the game
+#     """
+#     print(f"\tSCORE: {score}")
 
-def update_score(data):
-    """Update the players score for every game played
+def get_current_score(player_name):
+    """Retrieve the current score of the player from the leaderboard
     """
-    username_list = []
+    all_scores = scores.get_all_records()
+    # if all_scores:
+    #     print(f"Debug: {all_scores[0].keys()}")
+    for record in all_scores:
+        if record['NAME'] == player_name:
+            return int(record['SCORE'])
+    return 0
 
 #Add the endscores from end of game and other data from user to worksheet(scores)
-def update_worksheet(data, player_name, player_city, today_date, score):
+def update_worksheet(player_name, player_city, today_date, new_score):
     """Append the data from the player to the google worksheet."""
     print("Updating Leaderboard...\n")
-    worksheet_to_update = SHEET.worksheet('scores')
-    worksheet_to_update.append_row([str(player_name[0:10]), player_city, today_date, score])
-    
-    print('Leaderboard Updated.\n')
+    all_records = scores.get_all_records()
+    player_found = False
+    for index, record in enumerate(all_records):
+        if record['NAME'] == player_name:
+            updated_score = int(record['SCORE']) + new_score
+            scores.update_cell(index + 2, 4, updated_score)
+            player_found = True
+            print(f'{Fore.YELLOW}Your cumulative score is: {get_current_score(player_name)}\n')
+            break
 
-# Retrieve and show user thier scores
-def display_player_score():
-    """To retrieve the data from google sheet and display to user
-    """
-    print("Getting data....")
-    scores = SHEET.worksheet("scores").get_all_values()
-    scores_row = scores[-1]
-    print(scores_row)
+    if not player_found:
+        scores.append_row([player_name, player_city, today_date, new_score])
+    
+    print("Leaderboard updated.\n")
+
+# # Retrieve and show user thier scores
+# def display_player_score():
+#     """To retrieve the data from google sheet and display to user
+#     """
+#     print("Getting data....")
+#     scores = SHEET.worksheet("scores").get_all_values()
+#     scores_row = scores[-1]
+#     print(scores_row)
 
 # Show user the top five scored users
 def display_leaderboard():
@@ -254,13 +268,13 @@ def display_leaderboard():
         print(row)
 
 # Sort the worksheet using the score columm in acsending order
-def sort_sheet():
-    scores = SHEET.worksheet('scores')
+# def sort_sheet():
+#     scores = SHEET.worksheet('scores')
 
-    sorted_col_list = []
-    sorted_col = scores.sort((4, 'asc'), range = 'A2:D92')
-    sorted_list.append(sorted_col)
-    print(f'Leaderboard: {sorted_col_list}')
+#     sorted_col_list = []
+#     sorted_col = scores.sort((4, 'asc'), range = 'A2:D92')
+#     sorted_list.append(sorted_col)
+#     print(f'Leaderboard: {sorted_col_list}')
 
 #Main function
 def main():
