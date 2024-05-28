@@ -9,20 +9,21 @@ from hangman_typing import *
 from hangman_art import *
 from hangman_words import word_list
 
+# API for Google Sheets
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
     ]
 
-#CONSTS
+# Authentification 
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hangman_leaderboard')
 scores = SHEET.worksheet('scores')
-data = scores.get_all_values()
 
+#CONSTS
 CORRECT_LETTER_SCORE = 10
 EXTRA_SCORE = 100
 FULL_WORD_SCORE = 500
@@ -37,6 +38,7 @@ word_length = len(chosen_word)
 #Add date to google worksheet
 date = datetime.datetime.today()
 today_date = date.strftime("%d/%m/%Y")
+
 #Add color to text 
 colorama.init(autoreset = True)
 
@@ -44,11 +46,11 @@ def welcome_message():
     """Collect User´s name and city and set them as global variables so that they can be called in another funtion.
     """
     global player_name, player_city
-    #print(f'{Fore.GREEN} {logo}')
-    #typewriter (""" W E L C O M E   T O  T H E  H A N G M A N  G A M E ! !\n """)
-    #print(f"{Fore.CYAN} HERE ARE THE RULES: {game_info[0]}")
-    #print(input("Press enter to start the game\n"))
-    #clean()
+    print(f'{Fore.GREEN} {logo}')
+    typewriter (""" W E L C O M E   T O  T H E  H A N G M A N  G A M E ! !\n """)
+    print(f"{Fore.CYAN} HERE ARE THE RULES: {game_info[0]}")
+    print(input("Press enter to start the game\n"))
+    clean()
 
     #Collect user´s name and city       
     if __name__ == '__main__':
@@ -67,21 +69,23 @@ def welcome_message():
                 continue
             else:
                 break
-    #typewriter (""" Y O U  A R E  B R A V E   T O  P L A Y\t\nT H I S   G A M E   B Y   T H E   W A Y ! !
-    #\t\n\nG O O D   L U C K ! !\n
-   # """)
-#     clean()
+    typewriter (""" Y O U  A R E  B R A V E   T O  P L A Y\t\nT H I S   G A M E   B Y   T H E   W A Y ! !
+    \t\n\nG O O D   L U C K ! !\n
+   """)
+    clean()
 
-# To clear the screen after every iteration
+
 def clean():
-#on Windows System
+    """To clear the screen after every iteration
+    """
     if os.name == 'nt':
         os.system('cls')
-# on macOS and Linux System
     else:
         os.system('clear') 
 
 def play_game(chosen_word):
+    """Main Hangman Game
+    """
     #Testing code
     print(f'{Fore.LIGHTMAGENTA_EX}Pssst...The chosen word is {chosen_word}.')
 
@@ -157,15 +161,14 @@ def play_game(chosen_word):
             elif guess in guessed_word:
                 print(f"{Fore.RED}\n\t You´ve already guessed {guess} wrongly")
             
-            elif guess != chosen_word:
+            else:
                 print(f"{Fore.RED}\n\t{guess}, is not the Word, try again!")
                 attempts -= 1
                 guessed_word.append(guess)
-            
-            else:
-                end_of_game = True
-                word_length = chosen_word
-                score += EXTRA_SCORE
+                if attempts == 0:
+                    end_of_game = True
+                    print("You lose.")
+                    print(f"The word was {chosen_word}")
         else:
             print(f"{Fore.RED}\n\t INVALID INPUT!\n")
 
@@ -207,7 +210,7 @@ def repeat_game():
             display_leaderboard()
             
         elif user_choice == 'C':
-            print('Goodbye!')
+            print('Goodbye!\n Sorry to see you leave!')
             os.sys.exit()
         else:
             print('Please enter a valid answer')
@@ -231,7 +234,8 @@ def get_current_score(player_name):
 
 #Add the endscores from end of game and other data from user to worksheet(scores)
 def update_worksheet(player_name, player_city, today_date, new_score):
-    """Append the data from the player to the google worksheet."""
+    """Append the data from the player to the google worksheet.
+    """
     print("Updating Leaderboard...\n")
     all_records = scores.get_all_records()
     player_found = False
@@ -260,7 +264,8 @@ def update_worksheet(player_name, player_city, today_date, new_score):
 # Show user the top five scored users
 def display_leaderboard():
     """ To sort the score sheet according to score column 
-    in ascending order and display top five Players."""
+    in ascending order and display top five Players.
+    """
     scores = SHEET.worksheet('scores')
     all_data = scores.get_all_values()
     sorted_data = sorted(all_data[1:], key=lambda x: int(x[3]), reverse=True)[:5]
@@ -278,7 +283,8 @@ def display_leaderboard():
 
 #Main function
 def main():
-    """Main Function."""
+    """Main Function.
+    """
     welcome_message()
     play_game(chosen_word)
     repeat_game()

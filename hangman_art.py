@@ -29,7 +29,8 @@ stages = ['''
  /|   |
       |
       |
-=========''', '''
+=========
+''', '''
   +---+
   |   |
   O   |
@@ -45,7 +46,8 @@ stages = ['''
       |
       |
 =========
-''', '''
+''', 
+'''
   +---+
   |   |
       |
@@ -80,14 +82,14 @@ game_info = [
    |  |                                                                   |  |
    |  |  1 - You have 6 attempts to try to find the right word by         |  |
    |  |      inputting letters or the full word                           |  |
-   |  |  2 - If you guess a wrong letter you will lose an attempt and the |  |
+   |  |  2 - If your guess is wrong you will lose an attempt and the      |  |
    |  |      hangman will begin building                                  |  |
    |  |  3 - When you reach 0 attempts you will be hanged - Game Over     |  |
    |  |  POINTS:                                                          |  |
-   |  |  * 5 points per letter guessed right                              |  |
-   |  |  * 20 points if you guessed the right word                        |  |
-   |  |  * 50 extra points to complete the full word with max 3 letters   |  |
-   |  |    already guessed.                                               |  |
+   |  |  * 10 points for every correct letter                             |  |
+   |  |  * 500 points if you guessed the right word                       |  |
+   |  |  * 100 points extra if you win by guessing the word               |  |
+   |  |    letter for letter                                              |  |
    |  |___________________________________________________________________|  |
    |_________________________________________________________________________|
 """]                                                      
