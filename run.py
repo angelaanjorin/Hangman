@@ -13,7 +13,7 @@ colorama.init(autoreset = True)
 from hangman_typing import *
 from hangman_art import *
 from hangman_words import word_list
-chosen_word = random.choice(word_list).lower()
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -38,13 +38,17 @@ A - PLAY AGAIN
 B - LEADERBOARD
 C - EXIT GAME
 """
+chosen_word = random.choice(word_list).lower()
+global word_length 
+word_length = "_"  * len(chosen_word)
 # Retrieve and show user thier scores
 # Ask user if they want to see the top five scored users
 
 def welcome_message():
-    global player_name, player_city
+    
     """Collect User´s name and city and set them as global variables so that they can be called in another funtion.
     """
+    global player_name, player_city
     #print(f'{Fore.GREEN} {logo}')
     #typewriter (""" W E L C O M E   T O  T H E  H A N G M A N  G A M E ! !\n """)
     #print(f"{Fore.CYAN} HERE ARE THE RULES: {game_info[0]}")
@@ -88,7 +92,6 @@ def play_game(chosen_word):
     #Testing code
     print(f'{Fore.LIGHTMAGENTA_EX}Pssst...The chosen nation is {chosen_word}.')
 
-    word_length = "_"  * len(chosen_word)
     #create blank
     
     correct_letters = []
@@ -102,7 +105,7 @@ def play_game(chosen_word):
    
     print(f"""{Fore.YELLOW}YOU HAVE TO GUESS A WORD WITH {len(chosen_word)} LETTERS""")
     print('\n')
-    word_dash(word_length)
+    word_dash()
     print("\n")
 
     while not end_of_game:
@@ -114,7 +117,7 @@ def play_game(chosen_word):
 
         if len(guess) == 1 and guess.isalpha():
         #prompts for already guessed letter
-            if guess in word_length:
+            if guess in correct_letters:
                 print(f"You´ve already guessed {guess} correctly")
 
             elif guess in chosen_word:
@@ -169,7 +172,7 @@ def play_game(chosen_word):
             print(f"{Fore.RED}\n\t INVALID INPUT!\n")
 
         
-        word_dash(word_length)
+        word_dash()
         print("\n")
         print(f'Attempts left: {attempts}')
         #print("\n")
@@ -187,9 +190,11 @@ def get_word():
     chosen_word = random.choice(word_list)
     return chosen_word.lower()
 
-def word_dash(word_length):
+def word_dash():
     """print out empty spaces for the letters of chosen word
     """
+    global word_length
+    word_length = "_"  * len(chosen_word)
     for i in word_length:
         print(i, end=" ")
 
@@ -262,10 +267,10 @@ def display_leaderboard():
     columns =[]
     for ind in range(1,5):
         column = scores.col_values(ind)
-        columns.append(column)[-5]
+        columns.append(column[-5])
         print(columns)
 
-        
+
 def sort_sheet():
     scores = SHEET.worksheet('scores')
 
