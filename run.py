@@ -73,9 +73,6 @@ def welcome_message():
     print(f"{Fore.CYAN} HERE ARE THE RULES: {game_info[0]}")
     print(input("Press enter to start the game\n"))
     clean()
-#     typewriter (""" Y O U  A R E  B R A V E   T O  P L A Y\t\nT H I S   G A M E   B Y   T H E   W A Y ! !
-#     \t\n\nG O O D   L U C K ! !\n
-#    """) 
 
 def play_game(chosen_word):
     """Main Hangman Game
@@ -197,7 +194,7 @@ def word_dash(word_length):
     for i in word_length:
         print(i, end=" ")
 
-#Repeat game      
+     
 def repeat_game():
     """Asks the user if they want to play again or not.
     """
@@ -207,14 +204,11 @@ def repeat_game():
             clean()
             print(f'{player_name.capitalize()},ohh whooh you have choosen to continue playing!')
             chosen_word = random.choice(word_list).lower()
-            #print(f"Score:{score}")
             play_game(chosen_word)
-            #display_score(score)
         elif user_choice == 'B':
             clean()
             print('Here are the scores of the top 5 players...\n ')
             display_leaderboard()
-            
         elif user_choice == 'C':
             typewriter("""\n You are lucky to have escaped on the uncoming train....\nsee you later, alligator...\n""")
             os.sys.exit()
@@ -251,16 +245,7 @@ def update_worksheet(player_name, player_city, today_date, new_score):
     
     print("Leaderboard updated.\n")
 
-# # Retrieve and show user thier scores
-# def display_player_score():
-#     """To retrieve the data from google sheet and display to user
-#     """
-#     print("Getting data....")
-#     scores = SHEET.worksheet("scores").get_all_values()
-#     scores_row = scores[-1]
-#     print(scores_row)
 
-# Show user the top five scored users
 def display_leaderboard():
     """ To sort the score sheet according to score column 
     in ascending order and display top five Players.
@@ -268,25 +253,12 @@ def display_leaderboard():
     scores = SHEET.worksheet('scores')
     all_data = scores.get_all_values()
     sorted_data = sorted(all_data[1:], key=lambda x: int(x[3]), reverse=True)[:5]
-    # for rows in sorted_data:
-    #     print(f"{rows}\n")
-    #print(f"{Fore.YELLOW}{leaderboard[0]}")
     print(f"{Fore.YELLOW} {leaderboard[0]}")
     count = len(sorted_data)
     for i in range(0, count):
         print(f"""{Fore.GREEN}\t{i+1}\t{sorted_data[i][0]}\t{sorted_data[i][1]}\t\t{sorted_data[i][2]}\t{sorted_data[i][3]}""")
     print(f"""{Fore.YELLOW}\n    ============================================================\n""")
 
-# Sort the worksheet using the score columm in acsending order
-# def sort_sheet():
-#     scores = SHEET.worksheet('scores')
-
-#     sorted_col_list = []
-#     sorted_col = scores.sort((4, 'asc'), range = 'A2:D92')
-#     sorted_list.append(sorted_col)
-#     print(f'Leaderboard: {sorted_col_list}')
-
-#Main function
 def main():
     """Main Function.
     """
