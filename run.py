@@ -78,7 +78,7 @@ def play_game(chosen_word):
     """Main Hangman Game
     """
     #Testing code
-    print(f'{Fore.LIGHTMAGENTA_EX}Pssst...The chosen word is {chosen_word}.')
+    #print(f'{Fore.LIGHTMAGENTA_EX}Pssst...The chosen word is {chosen_word}.')
 
     #create blank
     word_length = "_" * len(chosen_word)
@@ -101,7 +101,7 @@ def play_game(chosen_word):
         if wrong_letter_list != []:
             print(f'{Fore.RED}Wrong letters: {wrong_letter_list}')
             print('\n')
-        guess = input("Guess a letter or word: ").lower()
+        guess = input("Guess a letter or word: \n").lower()
         clean()
 
         if len(guess) == 1 and guess.isalpha():
