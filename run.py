@@ -256,8 +256,8 @@ def display_leaderboard():
     print(f"{Fore.YELLOW} {leaderboard[0]}")
     count = len(sorted_data)
     for i in range(0, count):
-        print(f"""{Fore.GREEN}\t{i+1}\t{sorted_data[i][0]}\t{sorted_data[i][1]}\t\t{sorted_data[i][2]}\t{sorted_data[i][3]}""")
-    print(f"""{Fore.YELLOW}\n    ============================================================\n""")
+        print(f"""{Fore.GREEN}\t{i+1}\t{sorted_data[i][0].capitalize()}\t{sorted_data[i][3]}\t{sorted_data[i][1].capitalize()}""")
+    print(f"""{Fore.YELLOW}\n    =============================================\n""")
 
 def main():
     """Main Function.
