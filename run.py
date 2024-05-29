@@ -68,7 +68,7 @@ def welcome_message():
             else:
                 break
 
-    typewriter (""" You have 6 attempts to guess the city we are in now! \n If you win we let you go, if not you are coming with us!\n""")
+    typewriter (""" You have 6 attempts to guess the city we are in now! \n If you win, we let you go, if not you are coming with us!\n""")
     clean()
     print(f"{Fore.CYAN} HERE ARE THE RULES: {game_info[0]}")
     print(input("Press enter to start the game\n"))
@@ -104,7 +104,7 @@ def play_game(chosen_word):
         if wrong_letter_list != []:
             print(f'{Fore.RED}Wrong letters: {wrong_letter_list}')
             print('\n')
-        guess = input("Guess a letter: ").lower()
+        guess = input("Guess a letter or word: ").lower()
         clean()
 
         if len(guess) == 1 and guess.isalpha():
@@ -216,11 +216,11 @@ def repeat_game():
             #display_score(score)
         elif user_choice == 'B':
             clean()
-            print('Here are the scores of the best 5 players...\n ')
+            print('Here are the scores of the top 5 players...\n ')
             display_leaderboard()
             
         elif user_choice == 'C':
-            typewriter("""\n You are lucky to have escaped on the uncoming train.... see you later, alligator...\n""")
+            typewriter("""\n You are lucky to have escaped on the uncoming train....\nsee you later, alligator...\n""")
             os.sys.exit()
         else:
             print('Please enter a valid answer')
@@ -279,8 +279,14 @@ def display_leaderboard():
     scores = SHEET.worksheet('scores')
     all_data = scores.get_all_values()
     sorted_data = sorted(all_data[1:], key=lambda x: int(x[3]), reverse=True)[:5]
-    for row in sorted_data:
-        print(f"{row}\n")
+    # for rows in sorted_data:
+    #     print(f"{rows}\n")
+    #print(f"{Fore.YELLOW}{leaderboard[0]}")
+    print(f"{Fore.YELLOW} {leaderboard[0]}")
+    count = len(sorted_data)
+    for i in range(0, count):
+        print(f"""{Fore.GREEN}\t{i+1}\t{sorted_data[i][0]}\t{sorted_data[i][1]}\t\t{sorted_data[i][2]}\t{sorted_data[i][3]}""")
+    print(f"""{Fore.YELLOW}\n    ============================================================\n""")
 
 # Sort the worksheet using the score columm in acsending order
 # def sort_sheet():
