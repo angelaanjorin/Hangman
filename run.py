@@ -27,7 +27,7 @@ scores = SHEET.worksheet('scores')
 CORRECT_LETTER_SCORE = 10
 EXTRA_SCORE = 100
 FULL_WORD_SCORE = 500
-repeat_message = f"""{Fore.CYAN}You have 3 choices:
+repeat_message = f"""{Fore.CYAN}You have 3 choices:\n
 A - PLAY AGAIN
 B - LEADERBOARD
 C - ESCAPE GAME
@@ -47,7 +47,7 @@ def welcome_message():
     """
     global player_name, player_city
     print(f'{Fore.GREEN} {logo}')
-    typewriter (""" It is 3 am and you are lost on a deserted train station somewhere on your round trip to Europe. Suddenly three bandits appear..... ! !\n """)
+    typewriter (""" It is 3 am and you are lost on a deserted train station somewhere on your round trip to Europe.\n Suddenly three bandits appear..... ! !\n """)
     print(f"{Fore.YELLOW}And they ask...")
     
 
@@ -68,7 +68,7 @@ def welcome_message():
             else:
                 break
 
-    typewriter (""" You have 6 attempts to guess the city we are in now! If you win we let you go, if not you are coming with us!\n""")
+    typewriter (""" You have 6 attempts to guess the city we are in now! \n If you win we let you go, if not you are coming with us!\n""")
     clean()
     print(f"{Fore.CYAN} HERE ARE THE RULES: {game_info[0]}")
     print(input("Press enter to start the game\n"))
@@ -142,8 +142,9 @@ def play_game(chosen_word):
 
                 if attempts == 0:
                     end_of_game = True
-                    print("You lose.")
-                    print(f"The word was {chosen_word}")
+                    end_game()
+                    # print("You lose.")
+                    # print(f"The word was {chosen_word}")
                 
         #check for word inputs
         elif len(guess) >= 2  and guess.isalpha():
@@ -161,8 +162,8 @@ def play_game(chosen_word):
                 guessed_word.append(guess)
                 if attempts == 0:
                     end_of_game = True
-                    print("You lose.")
-                    print(f"The word was {chosen_word}")
+                    end_game()# print("You lose.")
+                    # print(f"The word was {chosen_word}")
         else:
             print(f"{Fore.RED}\n\t INVALID INPUT!\n")
 
@@ -176,6 +177,14 @@ def play_game(chosen_word):
         from hangman_art import stages
         print(stages[attempts])
     update_worksheet(player_name, player_city, today_date, score)
+    repeat_game()
+
+def end_game():
+    """End of game.
+    """
+    end_of_game = True
+    print("You lose.\n")
+    print(f"{Fore.YELLOW}The word was {chosen_word}\n")
     repeat_game()
 
 def clean():
