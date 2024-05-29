@@ -27,10 +27,10 @@ scores = SHEET.worksheet('scores')
 CORRECT_LETTER_SCORE = 10
 EXTRA_SCORE = 100
 FULL_WORD_SCORE = 500
-repeat_message = f"""{Fore.CYAN}
+repeat_message = f"""{Fore.CYAN}You have 3 choices:
 A - PLAY AGAIN
 B - LEADERBOARD
-C - EXIT GAME
+C - ESCAPE GAME
 """
 chosen_word = random.choice(word_list).lower()
 word_length = len(chosen_word)
@@ -47,41 +47,35 @@ def welcome_message():
     """
     global player_name, player_city
     print(f'{Fore.GREEN} {logo}')
-    typewriter (""" W E L C O M E   T O  T H E  H A N G M A N  G A M E ! !\n """)
+    typewriter (""" It is 3 am and you are lost on a deserted train station somewhere on your round trip to Europe. Suddenly three bandits appear..... ! !\n """)
+    print(f"{Fore.YELLOW}And they ask...")
+    
+
+    #Collect player´s name and city       
+    if __name__ == '__main__':
+        while True:
+            player_name = input(f"{Fore.CYAN}What is your name?\n").strip().lower()
+            if len(player_name) == 0:
+                print(f"{Fore.RED}Invalid input!")
+                continue
+            else:
+                break
+        while True:
+            player_city = input(f"{Fore.CYAN}What city are you originally from?:\n").strip().lower()
+            if len(player_city) == 1 and player_city.isalpha():
+                print(f"{Fore.RED}That is not a City!")
+                continue
+            else:
+                break
+
+    typewriter (""" You have 6 attempts to guess the city we are in now! If you win we let you go, if not you are coming with us!\n""")
+    clean()
     print(f"{Fore.CYAN} HERE ARE THE RULES: {game_info[0]}")
     print(input("Press enter to start the game\n"))
     clean()
-
-    #Collect user´s name and city       
-    if __name__ == '__main__':
-        while True:
-            player_name = input(f"{Fore.CYAN}Please enter your name:\n").strip().lower()
-            
-            if len(player_name) == 0:
-                print(f"{Fore.RED}Invalid input!")
-                continue
-            else:
-                break
-        while True:
-            player_city = input(f"{Fore.CYAN}Please enter your city:\n").strip().lower()
-            if len(player_name) == 0:
-                print(f"{Fore.RED}Invalid input!")
-                continue
-            else:
-                break
-    typewriter (""" Y O U  A R E  B R A V E   T O  P L A Y\t\nT H I S   G A M E   B Y   T H E   W A Y ! !
-    \t\n\nG O O D   L U C K ! !\n
-   """)
-    clean()
-
-
-def clean():
-    """To clear the screen after every iteration
-    """
-    if os.name == 'nt':
-        os.system('cls')
-    else:
-        os.system('clear') 
+#     typewriter (""" Y O U  A R E  B R A V E   T O  P L A Y\t\nT H I S   G A M E   B Y   T H E   W A Y ! !
+#     \t\n\nG O O D   L U C K ! !\n
+#    """) 
 
 def play_game(chosen_word):
     """Main Hangman Game
@@ -101,7 +95,7 @@ def play_game(chosen_word):
     global end_of_game 
     end_of_game = False
    
-    print(f"""{Fore.YELLOW}YOU HAVE TO GUESS A WORD WITH {len(chosen_word)} LETTERS""")
+    print(f"""{Fore.YELLOW}YOU HAVE TO GUESS A WORD WITH {len(chosen_word)} LETTERS !""")
     print('\n')
     word_dash(word_length)
     print("\n")
@@ -184,6 +178,13 @@ def play_game(chosen_word):
     update_worksheet(player_name, player_city, today_date, score)
     repeat_game()
 
+def clean():
+    """To clear the screen after every iteration
+    """
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 
 def word_dash(word_length):
     """print out empty spaces for the letters of chosen word
@@ -199,18 +200,18 @@ def repeat_game():
         user_choice = input(f'{repeat_message}>>>').upper()
         if user_choice == 'A':
             clean()
-            print(f'{player_name.capitalize()}, ohh whoh you have choosen to continue playing!')
+            print(f'{player_name.capitalize()},ohh whooh you have choosen to continue playing!')
             chosen_word = random.choice(word_list).lower()
             #print(f"Score:{score}")
             play_game(chosen_word)
             #display_score(score)
         elif user_choice == 'B':
             clean()
-            print('Here are the scores of the best 5 players... ')
+            print('Here are the scores of the best 5 players...\n ')
             display_leaderboard()
             
         elif user_choice == 'C':
-            print('Goodbye!\n Sorry to see you leave!')
+            typewriter("""\n You are lucky to have escaped on the uncoming train.... see you later, alligator...\n""")
             os.sys.exit()
         else:
             print('Please enter a valid answer')
@@ -270,7 +271,7 @@ def display_leaderboard():
     all_data = scores.get_all_values()
     sorted_data = sorted(all_data[1:], key=lambda x: int(x[3]), reverse=True)[:5]
     for row in sorted_data:
-        print(row)
+        print(f"{row}\n")
 
 # Sort the worksheet using the score columm in acsending order
 # def sort_sheet():
