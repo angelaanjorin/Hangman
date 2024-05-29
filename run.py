@@ -142,10 +142,7 @@ def play_game(chosen_word):
 
                 if attempts == 0:
                     end_of_game = True
-                    end_game()
-                    # print("You lose.")
-                    # print(f"The word was {chosen_word}")
-                
+                    end_game()       
         #check for word inputs
         elif len(guess) >= 2  and guess.isalpha():
             if guess == chosen_word:
@@ -162,8 +159,7 @@ def play_game(chosen_word):
                 guessed_word.append(guess)
                 if attempts == 0:
                     end_of_game = True
-                    end_game()# print("You lose.")
-                    # print(f"The word was {chosen_word}")
+                    end_game()
         else:
             print(f"{Fore.RED}\n\t INVALID INPUT!\n")
 
@@ -224,33 +220,26 @@ def repeat_game():
             os.sys.exit()
         else:
             print('Please enter a valid answer')
-    
-
-# def display_score(score):
-#     """Displays the user´s score during the game
-#     """
-#     print(f"\tSCORE: {score}")
 
 def get_current_score(player_name):
     """Retrieve the current score of the player from the leaderboard
     """
     all_scores = scores.get_all_records()
-    # if all_scores:
-    #     print(f"Debug: {all_scores[0].keys()}")
     for record in all_scores:
-        if record['NAME'] == player_name:
+        if record['NAME'] == player_name and record['CITY'] == player_city:
             return int(record['SCORE'])
     return 0
 
-#Add the endscores from end of game and other data from user to worksheet(scores)
+
 def update_worksheet(player_name, player_city, today_date, new_score):
     """Append the data from the player to the google worksheet.
+       Add the endscores from end of game and other data from user to worksheet(scores)
     """
     print("Updating Leaderboard...\n")
     all_records = scores.get_all_records()
     player_found = False
     for index, record in enumerate(all_records):
-        if record['NAME'] == player_name:
+        if record['NAME'] == player_name and record['CITY'] == player_city:
             updated_score = int(record['SCORE']) + new_score
             scores.update_cell(index + 2, 4, updated_score)
             player_found = True
