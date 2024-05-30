@@ -31,7 +31,7 @@ The goals for this site are as follows:
 * As a returning user, I would like to continue to increase my score by playing many games to compete with the top players.
 
 
-## Development Planes:
+# Development Planes:
 To create a game that is comprehensive and engaging for a user, as a developer you need to look at all aspects of the game and how someone who visits your app will use it. You have to consider all the user stories that have been outlined in the above sections.  
 
 ## Strategy
@@ -71,21 +71,27 @@ With the structure in place, it was then time to move onto the scope plane. This
 
 ### Content Requirements:
 1. The user will be looking for:
-      * Information on class times 
-      * Information on the bakery school
-      * Techniques on how to make something they may not have done before
+      * Information on how to play the game and the scoring system.
+      * Feedback during the game about the letters or words they input.
+      * Information about the attempts left during the game.
+      * The right word to be displayed if they lose.
+      * Information about the top player´s scores.
+      * The ability to play again to improve thier score or exit the game.
 
 ### Functionality Requirements:
 1. The user will be able to:
-      * Navigate through the site to find the information they need
-      * Signup to the classes offered on the site.
-      * Get more information through the icon links to the social networks of the school.
+      * Give thier name and city.
+      * Dicide if they want to play again, see the leaderboard or exit the game at   the end of playing a game.
 
-## Design
+## Skeleton
+The flowchart for this project was created using[ink] and was a guide for the whole project.
 
-### Website Structure
-The information above was then used to create a structure for the website. The Skeleton of the website was created on paper. 
-The Roxheim Bakery School website is a four page site: Home Page, Signup Page, Thank you Page and Gallery Page. The Home Page has five sections, (1) Header, (2) Xmas, (3) Intro, (4) Classes, (5) Footer with Social Networks links. The Home Page is linked to all the other pages through the Navigation Menu at the top right part of the header. The Home Page has also a link within the Class section to the Signup Page. The Signup Page and Gallery Page have also the same Navigation Menu and a link to the Home Page through the Logo.
+## Surface
+To make this game a bit more user friendly I used color and a typewriting technique to make the game more interesting with a background story.
+* The game begins with a green logo.
+* With the typewriter the beginnig of the story preceding the game is told.
+* Invalid inputs and wrong answwers are highlighted in red.
+* The leaderboard is displayed in green and in a clear table form.
 
 ### Color Scheme
 
