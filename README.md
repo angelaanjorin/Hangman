@@ -81,7 +81,7 @@ With the structure in place, it was then time to move onto the scope plane. This
 ### Functionality Requirements:
 1. The user will be able to:
       * Give thier name and city.
-      * Dicide if they want to play again, see the leaderboard or exit the game at the end of playing a game.
+      * Decide if they want to play again, see the leaderboard or exit the game at the end of playing a game.
 
 ## Skeleton
 The flowchart for this project was created using[draw.io] and was a guide for the whole project.
@@ -110,17 +110,30 @@ At the end of the game, the player gets to choose from 3 options: to either play
 ## Logo and Welcome Information for Users
 
 ![Logo](./assets/images/Features of Hangmann/logo and intro.png)
+
 * The logo is the first thing that the user sees. Then a story is told with a typewriteer to capture the interest and curiosity of the user. It tells them that it is 3 am and they are lost in a deserted train station when 3 bandits appear.
 [Live](https://hangmann-game-051c0aa67667.herokuapp.com/)
 
 ## User Input
 ![User inputs](./assets/images/Features%20of%20Hangmann/playernameandcity.png)
+
 * Continuing the narrative, the bandits ask the user for thier name and for the city they are from.
+
+### Invalid Name Input Error
+![No name input](./assets/images/Features%20of%20Hangmann/noentryfornameinput.png)
+
+* If the user presses enter without entering a name, an error message informs the user of the invalid input and they are prompted again to input thier name.
+
+### Invalid City Input Error
+![No city input](./assets/images/Features%20of%20Hangmann/)
+
+* If the user presses enter without entering a city, an error message informs the user of the invalid input and they are prompted again to input thier city.
 
 ## Rules of the Game and the Scoring System
 
 ![Rules of the Game and the Scoring System](./assets/images/Features%20of%20Hangmann/gamerules.png)
-* The user is then shown the game rules and how the scoring works. At the end of this display they are prompted to press the enter key to start the game.
+
+* The user is then shown the game rules and how the scoring works. At the end of this display they are prompted to press the enter key to start the game. Any other input + enter would start the game too.
 
 ## Masked Random Word Display
 
@@ -129,12 +142,72 @@ At the end of the game, the player gets to choose from 3 options: to either play
 * The user is then informed about how many letters the random word has and shown empty dashes to represent the unknown letters of the word. They are then prompted to guess a letter or word and to type in thier input.
 
 ## Game
+## Playing the game
+### First Correct Letter
+![first correct letter](./assets/images/Features%20of%20Hangmann/firstletter.png)
+
+### During the game
+![During the game](./assets/images/Features%20of%20Hangmann/playagain4thletter.png)
+
+* If the player guesses a word wrong for the first time during the game, the wrong letter list first appears in red with the wrongly guessed letter. And they loose 1 attempt.
+### Same correct letter
+![Same correct letter](./assets/images/Features of Hangmann/letteralreadycorrect.png)
+
+### Correct Word Input
+![Correct Word](./assets/images/Features%20of%20Hangmann/correctword.png)
+
+* If the player guesses the right word in the first game, they are told the correct word and that they have won. Thier total score is automatically the maximum of 500. The Leaderboard is updated with this information. 
+### End of second game:
+![End of game after first game](./assets/images/Features%20of%20Hangmann/playagainwordcorrect.png)
+
+* If the player guesses the whole word correctly in the second game and thereafter, they are presented additionaly with thier cumulative scores. 
+### Wrong word input
+![Wrong Word input](./assets/images/Features of Hangmann/wordwrongfirsttime.png)
+
+* If a player inputs a wrong word for the first time, they are informed the word is wrong and they loose an attempt. The word is stored in a wrong word list but not displayed to the player.
+![Same wrong word input](./assets/images/Features of Hangmann/wrongwordrepeat.png)
+
+* If the player puts in the same wrong word, they get told this but thier attempts do not reduce by one.
+
+## Hangman Stages
+### Hangman Stage 1
+![Stage 1](./assets/images/hangmanstages/stage1.png)
+
+* If the player guesses the letter wrong for the first time the hangman starts and the head is shown.
+### Hangman Stage 2
+![Stage 2](./assets/images/hangmanstages/stage2.png)
+
+* The body is shown at this second stage of the hangman.
+### Hangman Stage 3
+![Stage 3](./assets/images/hangmanstages/stage3.png)
+
+* At this stage the right arm is shown of the hangman.
+### Hangman Stage 4
+![Stage 4](./assets/images/hangmanstages/stage4.png)
+
+* At this stage the left arm is shown of the hangman.
+### Hangman Stage 5
+![Stage 5](./assets/images/hangmanstages/stage5.png)
+
+* At this stage the right leg is shown of the hangman.
+### Hangman Stage 6
+![Stage 6]()
+
+* At this stage the right leg is shown of the hangman.
 
 ## End Choices
-
-![Welcoming Christmas Section](./assets/images/READMEimages/xmassection.png)
-
-* A nice warm welcoming picture of children baking christmas cookies should have the effect of attracting the user and retaining thier interest. An inviting text accompanies the image.
+![End of game choices](./assets/images/Features%20of%20Hangmann/optiona.png)
+* At the end of playing a game, the player is given three choices of playing again, seeing the leaderboard or exiting the game.
+### Playagain
+![playagain](./assets/images/Features%20of%20Hangmann/playagain.png)
+* If the player chooses this option, the game restarts with a new unknown word for the player to guess. At the end of playing this second game, the player is presented with thier cumulative scores. 
+![Cumulative scores](./assets/images/Features%20of%20Hangmann/playagainwordcorrect.png)
+### Leaderboard
+![leaderboard](./assets/images/Features%20of%20Hangmann/leaderboard.png)
+* If the player chooses option "b", they get shown the scores of the top five players.
+### Exit Game
+![End of game](./assets/images/Features%20of%20Hangmann/exit.png)
+* At the end of the game the player can choose to exit the game and that ends the programm.
 
 # Future Features
 
@@ -156,19 +229,20 @@ At the end of the game, the player gets to choose from 3 options: to either play
 
 # Technolgies Used
 
-## Languages Used
+## Language Used
 
 * [Python](https://www.python.org/).
 
-
-## Framewworks - Libraries - Programs Used
-
+## Python Packages
 * random was imported to select a random word from the word list for the game.
 * os was imported to clear the screen at different stages of the programm.
 * colorama was imported to add color to some text during running the code.
 * gspread and google auth were imported to link with the google worksheet file.
 * datetime was imported to generate the date of playing the game.
+* time: defined time sleep
+* google.oauth2.servce_account:(https://google-auth.readthedocs.io/en/stable/index.html)
 
+## Framewworks - Libraries - Programs Used
 * [Git](https://git-scm.com/)
     * Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
 * [GitHub:](https://github.com/)
@@ -189,16 +263,15 @@ At the end of the game, the player gets to choose from 3 options: to either play
 
 
 # Testing
-
-The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
-
+## Code Institute Python Linter 
+* [CI Python Linter](https://pep8ci.herokuapp.com/) 
+The CI Python Linter was used to validate every Python file in the project to ensure there were no syntax errors in the project.
+* ![Result:]()
 * [W3C Markup Validator](https://validator.w3.org/#validate_by_input) 
 * [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
-
+* ![Lighthouse Results:](./assets/images/Features%20of%20Hangmann/Lighthouse-Report-Viewer.png)
 Google Lighthouse was used to test Performance, Best Practices, Accessibility and SEO on both Desktop and Mobile devices.
-The testing was done using the Google Chrome Browser. Testing was also done using Firefox on desktop.
-
-![Lighthouse Results:](./assets/images/READMEimages/Lighthouse-Report-Viewer5.png)
+The testing was done using the Google Chrome Browser.
 
 ## Functionality
 * All links have been hovered and clicked to ensure accessibility.
@@ -211,13 +284,9 @@ The testing was done using the Google Chrome Browser. Testing was also done usin
 
 
 # Bugs
+* 
 
-* I was unable to reduce the largest contenful paint element in <section id=xmas> and eliminate the render-blocking resources from Font Awesome as suggested by Google Lighthouse [Lighthouse Results here:](https://angelaanjorin.github.io/Roxheim-Baking-School/index.html)
 
-## Website Development Issues
-
-* At the initial stages of my project, I was using [codeanywhere ](https://codeanywhere.com/) with some difficulties until i was advised to use Visual Studio Code. 
-* I changed some of the fonts and colors towards the end of the project to improve the user experience.
 
 # Unfixed Bugs
 
