@@ -11,7 +11,7 @@ word_list = [
     "Moscow",
     "London",
     "Madrid",
-    "Rom",
+    "Rome",
     "Kiev",
     "Paris",
     "Vienna",

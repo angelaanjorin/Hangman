@@ -10,7 +10,7 @@ In the "Rite of Words and Life" a criminal to be hanged was strung up over a 5 l
 
 [Live Website Here](https://hangmann-game-051c0aa67667.herokuapp.com/)
 
-[Website Homepage](https://res.cloudinary.com/dzesjeplp/image/upload/v1717011893/Hangman/Am-I-Responsive-_fycc5n.png)
+![Website Homepage](https://res.cloudinary.com/dzesjeplp/image/upload/v1717011893/Hangman/Am-I-Responsive-_fycc5n.png)
 
 # Site Goals:
 
@@ -81,156 +81,114 @@ With the structure in place, it was then time to move onto the scope plane. This
 ### Functionality Requirements:
 1. The user will be able to:
       * Give thier name and city.
-      * Dicide if they want to play again, see the leaderboard or exit the game at   the end of playing a game.
+      * Dicide if they want to play again, see the leaderboard or exit the game at the end of playing a game.
 
 ## Skeleton
-The flowchart for this project was created using[ink] and was a guide for the whole project.
+The flowchart for this project was created using[draw.io] and was a guide for the whole project.
+dropdownmenu with flowchart.
 
 ## Surface
-To make this game a bit more user friendly I used color and a typewriting technique to make the game more interesting with a background story.
+To make this game a bit more user friendly, I used color and a typewriting technique to make the game more interesting with a background story.
 * The game begins with a green logo.
 * With the typewriter the beginnig of the story preceding the game is told.
 * Invalid inputs and wrong answwers are highlighted in red.
 * The leaderboard is displayed in green and in a clear table form.
 
-### Color Scheme
+# How to play
+The traditional way to play the Hangman games were played with pen and paper. It typically involved two players, one would come up with a word and write the amount of dashes on the piece of paper representing the amount of letters in the word. The other player would guess the letters of the word and for each correct letter get it filled in the blank spaces. For wrong letters the image of the hangman will be drawn, starting with the head of the man, the body, both arms and then the legs. 
 
-![Home Page](./assets/images/READMEimages/Create-a-Palette-Coolors1.png)
-* The color scheme of the website was generated using [Coolors](https://coolors.co/) from the main picture on the Home Page. 
-* There are four main colors used: (1) White (#ffffff), (2) brown-derby (#5b4435) (3)sinopi (#D43F17ff) (4) drab-dark-brown (#463B24ff). The last color is used as a default font color. The background is white and sinopi (#D43F17ff) is used as a highlighter on very large screen devices for the hover effect on the signup page.
+In this version of the game, a background story is told about a person (the player), who is lost in a deserted train station in Europe and is met by 3 bandits who ask the lost traveller for thier name and the city they come from. Then the rules of the game are laid out and the game starts. The computer generates a random word from the word list of cities in Europe. It gives a hint to the player by informing them of how many letters the word has.
 
-### Typography
+The user then can guess the word by either typing a letter or a word and they get feedback telling them if the input was correct or wrong. For every initial wrong input, they lose an attempt from the 6 original attempts and the image of the hangman starts to be built. Alist of the wrongly guessed inputs are shown to the user. They lose the game when all attempts have been used up. 
 
-* The Oswald, sans-serif is used for the Headings.
-* The default font set by the style.sheet is Georgia, 'Times New Roman', Times, serif used for the test.
+Scores are added up for the correct inputs according to the illustrated scoring system. For very correct letter they gain 10 points, for guessing the whole word letter for letter an extra bonus of 100 points are added. If they guess the whole word, they get a total score of 500.
 
-### Imagery
+At the end of the game, the player gets to choose from 3 options: to either play again, see the leaderboard or exit the game. If the chose to playagain, the game repeats, with the exception of showing them thereafter a cumulative total score result at the end of every game played. If they choose to see the leaderboard, they are shown the scores of the top five players. If they chose to exit, the program ends.
 
-* 3 background images, one as the first section of the Home Page, the other used in the class section of the Home Page and the last used on the Signup Page.
-* 1 image for the intro section of the Home Page.
-* 1 image for the thank you Page.
-* 12 images for the Gallery Page.
-* Note: all images were converted to the webp files.
+# Features
 
-### Interactive Links
+## Logo and Welcome Information for Users
 
-* In the footer, users can access the school´s social media links (Facebook, Twitter, Youtube and Instagram). Once the icons for the social media links are clicked, the user is directed to a new tab with the respective sites. 
-* There is an internal link in the class section of the Home Page, directing the user to the Signup Page to sign up for the classes.
+![Logo](./assets/images/Features of Hangmann/logo and intro.png)
+* The logo is the first thing that the user sees. Then a story is told with a typewriteer to capture the interest and curiosity of the user. It tells them that it is 3 am and they are lost in a deserted train station when 3 bandits appear.
+[Live](https://hangmann-game-051c0aa67667.herokuapp.com/)
 
-## Features
+## User Input
+![User inputs](./assets/images/Features%20of%20Hangmann/playernameandcity.png)
+* Continuing the narrative, the bandits ask the user for thier name and for the city they are from.
 
-### Home Page 
+## Rules of the Game and the Scoring System
 
-![Home Page](./assets/images/READMEimages/Homepage.png)
-* The Home Page is the first page of the site that users get in contact with. It has an appealing big image of children´s hands baking cookies for christmas. The aim is for the user to have an emotional connection to baking at christmas time which should ret
-[Live Homepage Here](https://angelaanjorin.github.io/Roxheim-Baking-School/index.html)
+![Rules of the Game and the Scoring System](./assets/images/Features%20of%20Hangmann/gamerules.png)
+* The user is then shown the game rules and how the scoring works. At the end of this display they are prompted to press the enter key to start the game.
 
-### Navigation Menu
+## Masked Random Word Display
 
-* In the header on the right hand side users can find the navigation menu. It is fully responsive on all devices. The Navigation Menu has the links to the different pages of the site.
+![Random Word](./assets/images/Features%20of%20Hangmann/numberoflettersofchosenword.png)
 
-#### Mobile
+* The user is then informed about how many letters the random word has and shown empty dashes to represent the unknown letters of the word. They are then prompted to guess a letter or word and to type in thier input.
 
-![Navigation Menu Closed](./assets/images/READMEimages/navimobleclosed.png)
-* The Navigation Menu is closed and represented by a burger sign on mobile devices. 
+## Game
 
-![Navigation Menu Opened](./assets/images/READMEimages/navimobileopened.png)
-* When the burger icon is toggled on the mobile devices it fully opens with the links to the other pages.
-
-#### Tablet
-
-![Navigation Menu on Tablets](./assets/images/READMEimages/Navitablet.png)
-
-*The Navigation Menu shows as a horizontal list on the right hand side of the Header on Tablets.
-
-### Welcoming Christmas Baking Picture
+## End Choices
 
 ![Welcoming Christmas Section](./assets/images/READMEimages/xmassection.png)
 
 * A nice warm welcoming picture of children baking christmas cookies should have the effect of attracting the user and retaining thier interest. An inviting text accompanies the image.
 
-### Introduction Section
+# Future Features
 
-![Introduction Section](./assets/images/READMEimages/introtablet.png)
-* This section should give the user some information about the Roxheim Bakery School and what benefits they should expect when they join a baking class. It is responsive on the different devices.
+## Updated Scoring System
 
-### Class Section
+* If a letter in the word appears more than once, the score of 10 for each correct letter should be multiplied by how many times that letter appears in the word.
+* To prevent players from inputting the whole word to get the maximum score of 500 after guessing the word and only one letter is left to guess. If there are only 2 letters left to guess of the word, the user should be prevented from guessing the whole word. 
 
-![Class section](./assets/images/READMEimages/Classes576px.png)
-* The aim of the section is to provide the user with the information about the different classes with a link to refer them to the signup Page.
+## Choice of different word lists 
 
-### Footer Section
+* To make the game more interesting especially for returning players, they could be asked at the beginning of the game to choose which country or nation they are lost in with a different word list partaining to cities in that country or nation. 
 
-![Footer](./assets/images/READMEimages/footer.png)
-This section gives the links to all the social network sites for the school, to give the user more information about the school.
+## Feedback section
 
-### Signup Page
+* The player could be asked before exiting the game if they want to leave a feedback or not. This feedback could be stored in the google worksheet.
 
-![Signup Page](./assets/images/READMEimages/signuppage.png)
+## Correction section
+* If a player has mispelt thier name or city, they should be able to have a choice to change this, so that thier cumulative scores are stored under the rigth input.
 
-* In this section the users are given the opportunity to signup for a course.
+# Technolgies Used
 
-#### Larger Desktops
+## Languages Used
 
- ![Signup Page with Hover Features](./assets/images/READMEimages/signupdesktop.png)
- * Here  on larger devices the hover feature is used to engage the user more and encourage them to signup for a class.
-[Live Feature Here](https://angelaanjorin.github.io/Roxheim-Baking-School/signup.html)
+* [Python](https://www.python.org/).
 
-### Thankyou Page
 
-![Thankyou Page](./assets/images/READMEimages/thankyou.png)
-* This page pops up when the user has correctly signed up for a course. It is a thank you message with the added information that they will receive a confirmation email shortly.
+## Framewworks - Libraries - Programs Used
 
-### Gallery Page
+* random was imported to select a random word from the word list for the game.
+* os was imported to clear the screen at different stages of the programm.
+* colorama was imported to add color to some text during running the code.
+* gspread and google auth were imported to link with the google worksheet file.
+* datetime was imported to generate the date of playing the game.
 
-![Gallery Page](./assets/images/READMEimages/Gallerysection.png)
-* This section gives the user a gallery of images about the activites at the Roxheim Bakery School, showing the children having fun baking. It show cases some of the baked products and the children eating them and enjoying themselves. It is a visual form of a review section. 
-[Live Gallery Page](https://angelaanjorin.github.io/Roxheim-Baking-School/gallery.html)
-
-## Future Features
-
-### Customer Review Section
-
-* If there is a Review Section with parents telling how thier children enjoyed the baking classes, this would help the user to gain confidence to signup for a class.
-
-### Shop Section
-
-* A shop can be used on many levels to generate extra money for the school, selling all kinds of things from recipies, baking utensils, baking aprons and gloves and hats for the children, recipe books etc. Selling digital courses for children who can´t come to the school either because they live too far or the days and times of the provides classes are just not convenient for the user. Older children and even adults can also benefit from the digital courses. 
-
-### About me Section
-
-* More infromation about the teacher of the Roxheim Bakery School would help the users to know more about the person behind the school building more trust.
-
-## Technolgies Used
-
-### Languages Used
-
-* [HTML5](https://en.wikipedia.org/wiki/HTML5).
-* [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets).
-
-### Frameworks - Libraries - Programs Used
-
-* [Google Fonts:](https://fonts.google.com/)
-   * Google fonts were used to import the 'Oswald' fonts throughout the style.css.
-* [Font Awesome:](https://fontawesome.com/)
-    * Icons for the burger Navigation Menu, the cake with candles, happy child and for the social networks were acquired from Font Awesome.
 * [Git](https://git-scm.com/)
     * Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
 * [GitHub:](https://github.com/)
     * GitHub is used to store the project's code after being pushed from Git.
 * [GitHuv](https://derlin.github.io/bitdowntoc/)
     * This link was used to create the table of content for the README file.
-* [Visual Studio Code](https://code.visualstudio.com/)
-    *Visual studio code was used to write my code.
-* [Freeconvert:](https://www.freeconvert.com/de/webp-converter)
-* [Convertio:](https://convertio.co/)
-    * These sites were used to modify and resize all images on this website.
-* [Canva](https://www.canva.com/design/DAGA0N2eK2Y/s47LWlWuWGWSnfLPZoMWpQ/edit)
-    * Canva was used to create the Thankyou image.
-* [Coolors:](https://coolors.co/image-picker)
-    * Coolors was used to generate a color pallete for the site based on the welcoming first image on the Home Page.
+* [Gitpod](https://gitpod.io/)
+    * Gitpod was used to write my code.
+* [Draw.io:](https://app.diagrams.net/)
+    * Draw.io was used to draw the flowchart for the whole structure of the programm.
+* [Cloudinary:](https://cloudinary.com/)
+    * The images linked in the readme file are stored here.
+* [Heroku:](https://heroku.com/)
+    * Heroku was used to deploy the project.
+* [Google Sheets:](https://heroku.com/)
+    * Google sheets was used to store the user´s inputed information, the date and to track the scores of the user.
+    You can view the Google sheets file here: [https://docs.google.com/spreadsheets/d/1a4cQ8MmqxNLSOMSEqPsuPDMlvOTl8-AqtlW-sh9tqBc/edit?usp=sharing].
 
-## Testing
+
+# Testing
 
 The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
 
@@ -242,7 +200,7 @@ The testing was done using the Google Chrome Browser. Testing was also done usin
 
 ![Lighthouse Results:](./assets/images/READMEimages/Lighthouse-Report-Viewer5.png)
 
-  ## Functionality
+## Functionality
 * All links have been hovered and clicked to ensure accessibility.
 * Pages all load correctly on all device screen sizes.
 * All social media links work correctly and open on a new tab.
@@ -252,50 +210,60 @@ The testing was done using the Google Chrome Browser. Testing was also done usin
 * The filled out sections of the form change color when completed by the user correctly.
 
 
-   ## Bugs
+# Bugs
 
 * I was unable to reduce the largest contenful paint element in <section id=xmas> and eliminate the render-blocking resources from Font Awesome as suggested by Google Lighthouse [Lighthouse Results here:](https://angelaanjorin.github.io/Roxheim-Baking-School/index.html)
 
-   ## Website Development Issues
+## Website Development Issues
 
 * At the initial stages of my project, I was using [codeanywhere ](https://codeanywhere.com/) with some difficulties until i was advised to use Visual Studio Code. 
 * I changed some of the fonts and colors towards the end of the project to improve the user experience.
 
-## Deployment of This Project
+# Unfixed Bugs
 
-The website development was created in the "main" branch. This branch was deployed using GitHub Pages.
+# Deployment
 
-* This site was deployed by completing the following steps:
+This project was developed using GitPod, committed and pushed to GitHub using a GitPod terminal.
 
-1. Open [GitHub](https://github.com/).
-2. Click on the project to be deployed.
-3. Navigate to the "Settings".
-4. Navigate down to the "GitHub Pages".
-5. Click on "Check it out here!".
-6. Select the "main" branch and select "Save".
-7. The link to the live website was ready on the top.
+Deploying on Heroku To deploy this page to Heroku from its GitHub repository, the following steps were taken:
 
-## Credits
+1. Create a new app in Heroku.
+2. Select "New" and "Create new app".
+3. Name the new app and click "Create new app".
+4. Click on the "Settings" tab at the top of the page
+5. Open the "Reveal Config Vars" section and input the following information - KEY: PORT, VALUE: 8000.
+6. Under the Config Vars section in "Settings" select "BuildPack" and select Python and Nodejs, Make sure they are in this order.
+7. Now go to the "Deploy" tab at the top of the page and select your deploy method and repository.
+8. In "Deployment Method" click on "GitHub" to connect them.
+9. Once they are connected search for the repository you want and hit "connect".
+10. Either choose "Enable Automatic Deploys" or "Deploy Branch" in the manual deploy section. Note, if you click on Automatic Deploys, you will still need to hit deploy branch to build the site
+11. Heroku will now deploy the site.
 
-### Information Sources/Resources
+# Credits
 
-* [W3Schools](https://www.w3schools.com/).
+## Information Sources/Resources
 
-* [Code Institute](https://stackoverflow.com/).
+* [Git tower:](https://www.git-tower.com/learn/git/commands/git-rm).
+* [Python:](https://www.python.org/).
+* [gspread:](https://www.gspread.org/).
+* [Code Institute:](https://learn.codeinstitute.net/).
+* [Stack Overflow](https://stackoverflow.com/).
   
 
 ## Content
 
-* All the text content is original. I got inspiration from the following the Love run Project and following Projects 1 from Code Institute
-    1. [Love Running](https://code-institute-org.github.io/love-running-2.0/index.html)
-    2. [Flawlesscooking by Martina Martin](https://martiless.github.io/flawlesscooking/)
-    3. [Travel World by Pedro Cristo](https://pedrocristo.github.io/portfolio_project_1/index.html)
+* All the text content is original. I got inspiration from the following :
+    1. [Love Sandwiches](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode)
+    2. [100 days of Code by Dr. Angela Yu ](https://www.udemy.com/user/4b4368a3-b5c8-4529-aa65-2056ec31f37e/)
+    3. [Portfolio Project 3 by Pedro Cristo](https://github.com/PedroCristo/portfolio_project_3)
+    4. [CodeWithdar](https://github.com/CodeWithdar/python-tutorials-/blob/main/main.py)
 
 ### Images
 
-* [Pexels:](https://www.pexels.com/search/baking%20children/)
-    *All the free images used on the site were gotten from Pexels.
+* [Logo and Hangman Images:](https://ascii.co.uk/art/hangman)
+    * The logo and Hangmanimages were gotten from the above ASCII webpage.
+* [Game rules and Leaderboard:](https://github.com/PedroCristo/portfolio_project_3)
   
-## Special Thanks
-
+# Acknowledgements
+ * Thanks to my Mentor Gareth McGirr for his assistance throughout the project.
  * Special thanks to my partner and alumni of Code Institute Eric Jones for his assistance throughout this project.
