@@ -49,9 +49,9 @@ def welcome_message():
     """
     global player_name, player_city
     print(f'{Fore.GREEN} {logo}')
-    typewriter(
-    """ It is 3 am and you are lost on a deserted train station somewhere on your 
-round trip to Europe.\nSuddenly three bandits appear..... ! !""")
+    typewriter("""
+    It is 3 am and you are lost on a deserted train station somewhere
+    on your round trip to Europe.\nSuddenly three bandits appear.... ! !""")
     print("/n")
     print(f"{Fore.YELLOW}And they ask.../n")
 
@@ -74,9 +74,8 @@ round trip to Europe.\nSuddenly three bandits appear..... ! !""")
             else:
                 break
 
-    typewriter(
-    """ You have 6 attempts to guess the city we are in now!
-If you win, we let you go, if not you are coming with us!\n""")
+    typewriter(""" You have 6 attempts to guess the city we are in now!
+    If you win, we let you go, if not you are coming with us!\n""")
     clean()
     print(f"{Fore.CYAN} HERE ARE THE RULES: {game_info[0]}")
     print(input("Press enter to start the game\n"))
