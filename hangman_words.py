@@ -1,5 +1,3 @@
-import random
-
 word_list = [
     "Lisbon",
     "Barcelona",
@@ -51,9 +49,3 @@ word_list = [
     "Vilnius",
     "Zagreb"
 ]
-
-"""Choose a word randomly from the word list
-"""
-def get_word ():
-    chosen_word = random.choice(word_list)
-    return chosen_word.lower()

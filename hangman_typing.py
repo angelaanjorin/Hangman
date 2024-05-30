@@ -1,6 +1,7 @@
 import sys
 import time
 
+
 def typewriter(string):
     '''for the main text at the beginning of the game
     '''

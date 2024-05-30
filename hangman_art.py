@@ -73,9 +73,7 @@ logo = """
                     __/ |                      
                    |___/    
                    """ 
-
-
-         
+      
 game_info = [
  # hangman game rules
  """
