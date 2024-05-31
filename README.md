@@ -8,9 +8,9 @@ The Hangmann is believed to have originated in England during the 17th century. 
 
 In the "Rite of Words and Life" a criminal to be hanged was strung up over a 5 legged stand, and a board with a series of short ropes representing a word was displayed. The Executioner would pick the word, and would use charcoal to mark correctly guessed letters on the dashes of the board, and incorrect letters to the side. At every incorrect guess the executioner would use a sledge hammer or axe to knock away a single leg of the stand. 5 wrong guesses, and the criminal was hanged. If the entire word was filled in correctly or guessed, the condemned would be set free from that sentence and not tried again on that crime.
 
-View the Hanman live game [HERE](https://hangmann-game-051c0aa67667.herokuapp.com/)
+View the Hangman live game [HERE](https://hangmann-game-051c0aa67667.herokuapp.com/)
 
-![INTRO](https://res.cloudinary.com/dzesjeplp/image/upload/v1717011893/Hangman/Am-I-Responsive-_fycc5n.png)
+![INTRO](./assets/images/readme/mainpicture.png)
 
 # Site Goals:
 
@@ -162,10 +162,10 @@ At the end of the game, the player gets to choose from 3 options: to either play
 
 * If the player guesses the whole word correctly in the second game and thereafter, they are presented additionaly with thier cumulative scores. 
 ### Wrong word input
-![Wrong Word input](./assets/images/Features of Hangmann/wordwrongfirsttime.png)
+![Wrong Word input](./assets/images/Features%20of%20Hangmann/wordwrongfirsttime.png)
 
 * If a player inputs a wrong word for the first time, they are informed the word is wrong and they loose an attempt. The word is stored in a wrong word list but not displayed to the player.
-![Same wrong word input](./assets/images/Features of Hangmann/wrongwordrepeat.png)
+![Same wrong word input](./assets/images/Features%20of%20Hangmann/wrongwordrepeat.png)
 
 * If the player puts in the same wrong word, they get told this but thier attempts do not reduce by one.
 
@@ -199,7 +199,7 @@ At the end of the game, the player gets to choose from 3 options: to either play
 ![End of game choices](./assets/images/Features%20of%20Hangmann/optiona.png)
 
 * At the end of playing a game, the player is given three choices of playing again, seeing the leaderboard or exiting the game.
-### Playagain
+### Play again
 ![playagain](./assets/images/Features%20of%20Hangmann/playagain.png)
 
 * If the player chooses this option, the game restarts with a new unknown word for the player to guess. At the end of playing this second game, the player is presented with thier cumulative scores. 
@@ -270,7 +270,7 @@ At the end of the game, the player gets to choose from 3 options: to either play
 
 # Testing
 ## Code Institute Python Linter 
-* [CI Python Linter](https://pep8ci.herokuapp.com/) 
+[CI Python Linter](https://pep8ci.herokuapp.com/) 
 The CI Python Linter was used to validate every Python file in the project to ensure there were no syntax errors in the project.
 <details><summary>run.py - CI Python Linter Check</summary>
 
@@ -290,9 +290,11 @@ The CI Python Linter was used to validate every Python file in the project to en
 
 </details>
 
-* [W3C Markup Validator](https://validator.w3.org/#validate_by_input) 
-* [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
-* ![Lighthouse Results:](./assets/images/Features%20of%20Hangmann/Lighthouse-Report-Viewer.png)
+[W3C Markup Validator](https://validator.w3.org/#validate_by_input) 
+
+[W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
+
+![Lighthouse Results:](./assets/images/Features%20of%20Hangmann/Lighthouse-Report-Viewer.png)
 
 Google Lighthouse was used to test Performance, Best Practices, Accessibility and SEO on both Desktop and Mobile devices.
 The testing was done using the Google Chrome Browser.
@@ -301,58 +303,48 @@ The testing was done using the Google Chrome Browser.
 ## Manual Testing
 
 The game has been manually tested multiple times during the coding phase. Additionally, it was checked after being deployed to Heroku to ensure that all features are displaying as intended. Furthermore, friends and relatives have also tested the game. 
-Testing was performed on various aspects, such as rules display, username input validation, select difficulty input validation, gallows ASCII image display, correct and incorrect answers, and win or lose display. Finally, the play again feature was also tested.
+Testing was performed on various aspects such as: 
 
 | Feature | Expected Result | Steps Taken | Actual Result | Screenshot |
 | ------- | ----------------| ------------ | ------------ | ----------|
-| Start Screen | To show the graphic and the welcome message| None | As intended | ![Screenshot with the logo and welcome message](/readme-screenshots/intro-screen.png) |
-| Display Rules | To display rules or to skip them by using letters "y" and "n" | Insert "y" to view and "n" to skip | As intended | ![Screenshot of the displayed rules](/readme-screenshots/game-rules.png) |
-| Create Username | To get username and use it in the game's messages | Insert alphanunumeric username | As intended | ![Screenshot os the entered username](/readme-screenshots/create-username.png) |
-| Personalised Message With The Username | To display username in messages | None | As intented | ![Screenshot with the personalised messages](/readme-screenshots/personalised-message-lost.png) ![Another screenshot](/readme-screenshots/personalised-messsage-won.png) |
-| Choose Difficulty Level | To retrieve the number from the options | Insert 1, 2 or 3 | As intended | ![Screenshot with the difficulty level options](/readme-screenshots/difficulty-choice.png) |
-| Guess a letter or a word | Prompts the user to guess a letter or go for the whole word | Input a letter or a word to guess | As intended | ![Screenshot of the prompt to enter a letter or a word](/readme-screenshots/make-a-guess.png) |
-| Correct Guess | To display the position of the letter, the gallows with no lost tries, a list of the letters that already been inserted | Guessed a correct letter | As intended | ![Screenshot of a correct guessed letter](/readme-screenshots/guessed-letter.png)
-| Incorrect Guess | To display incorrect message, the gallows with the left tries, the list with the already insterted letted and updated word | Guessed wrong letter | As intended | ![Screenshot with the incorrect guess message](/readme-screenshots/incorrect-guess.png) |
-| Repeated Guess | To display a message saying guessed already, no penalty applied | Input a letter previously inserted | As intended | ![Screenshot of a message for a second input of a letter](/readme-screenshots/previous-guess.png) |
-| Hangman Gallows | To show the updated hangman gallows | Input several letters | As intended | ![Screenshots with the gallows updating whilist inserting right or wrong letters](/readme-screenshots/updating-gallows-incorrect.png) ![A second screenshot](/readme-screenshots/updating-gallows-correct.png) |
-| Win The Game | To show congrats message and show the word | Guess the word in less than 6 tries | As intended | ![Screenshot with the win message](/readme-screenshots/guessed-word.png) |
-| Lose The Game | To show a message confirming the loss | Fail to guess in 6 tries | As intended | ![Screenshot with the losing game message](/readme-screenshots/out-of-tries-1.png) |
-| Play Again | To display the play again choice message | Choose between "y" and "n" | As intended | ![Screenshot with the play again message](/readme-screenshots/play-again.png) |
+| Start Screen | To show the logo and the welcome message| None | As intended | ![Screenshot with the logo and welcome message](./assets/images/Features%20of%20Hangmann/logo%20and%20intro.png) |
+| Display Rules | To display the rules and scoring system of the game| None | As intended | ![Screenshot of the displayed rules](./assets/images/Features%20of%20Hangmann/gamerules.png) |
+| Player Name | To get player´s name and store it in google worksheet | Insert alphanumeric player name | As intended | ![Screenshot of the entered username](./assets/images/Features%20of%20Hangmann/playernameandcity.png) |
+| Player Name| To get player´s name and use it in the game´s messages | Insert aphanumeric player city | As intented | ![Screenshot with the personalised messages](./) ![Another screenshot](./) |
+| Player city| To get player´s city and store it in google worksheet | Insert aphanumeric player city | As intented | ![Screenshot with the city](./)
+| Guess a letter or a word | Prompts the player to guess a letter or go for the whole word | Input a letter or a word to guess | As intended | ![Screenshot of the prompt to enter a letter or a word](./assets/images/Features%20of%20Hangmann/) |
+| Correct Guess | To display the position of the letter, the hangman with no lost attempts | Guessed a correct letter | As intended | ![Screenshot of a correct guessed letter](./assets/images/Features%20of%20Hangmann/firstletter.png)
+| Incorrect Guess | To display incorrect message, the hangman with the remaining attempts, the list with the already insterted letted and the wrong letter list | Guessed wrong letter | As intended | ![Screenshot with the incorrect guess message](./ ) |
+| Repeated Guess | To display a message saying the input was already guessed, if wrong no penalty applied | Input a letter previously inserted | As intended | ![Screenshot of a message for a second input of a letter](./) ![A second screenshot](./assets/images/Features%20of%20Hangmann/letteralreadycorrect.png) |
+| Word Guess | To display a message saying if the word is correct or wrong | Input a word | As intended | ![Screenshot of a message for a correct word](./assets/images/Features%20of%20Hangmann/correctword.png) ![A second screenshot](./assets/images/Features%20of%20Hangmann/wordwrongfirsttime.png) ![A third screenshot](./assets/images/Features%20of%20Hangmann/wrongwordrepeat.png) |
+| Hangman Gallows | To show the updated hangman gallows | Input several letters | As intended | ![Screenshots with the gallows updating whilist inserting right or wrong letters](./assets/images/Features%20of%20Hangmann/playagain4thletter.png) ![A second screenshot](./assets/images/Features%20of%20Hangmann/twoletters.png) |
+| Win The Game | To show congrats message and show the word | Guess the word in less than 6 attempts| As intended | ![Screenshot with the win message](./) |
+| Lose The Game | To show a message confirming the loss | Fail to guess in 6 attempts| As intended | ![Screenshot with the losing game message](./assets/images/Features%20of%20Hangmann/) |
+| Play Again | To display the play again choice message | Choose between a, b or c | As intended | ![Screenshot with the play again message](./assets/images/Features%20of%20Hangmann/optiona.png) |
 
-## Input validation testing <a name="input validation"></a>
+## Input validation testing
+* Enter playername
+    * Playername cannot be empty
 
-* Display rules
-    * Cannot conitue if the input is empty
-    * It must be either a "y" or an "n"
+![Screenshot for Playername input validation](./)
 
-![Screenshot with the validation for displaying the rules](/readme-screenshots/rules-input-validation.png)
+* Enter playercity
+    * Playercity cannot be empty
 
-* Enter username
-    * Username cannot be empty
-    * Username must be formed of letters and numbers
-    * Username cannot contain special charcters
-    * Username has a maximum 8 characters rule
+![Screenshot for Playercity input validation](./)
 
-![Screenshot for username input validation](/readme-screenshots/username-input-validation.png)
+* Enter letter or word
 
-* Select difficulty level
+    * Can only contain letters
+    * Can not contain numbers
 
-    * Can only contain numbers
-    * Can only have the values 1, 2 or 3
-
-![Screenshot for difficulty level input validation](/readme-screenshots/difficulty-level-validation.png)
-
-* Guess a letter or a word
-    * Can only input letters
-
-![Screenshot with inputing a special character](/readme-screenshots/guess-letters-words-validation.png)
-![Screenshot with inputing a number](/readme-screenshots/guess-letters-words-validation-1.png)
+![Screenshot for guess input validation](./assets/images/Features%20of%20Hangmann/invalidinput.png)
 
 * Play Again
-    * Can only contain letters "y" and "n"
-    * cannot contain spaces or special character
+    * Can only contain letters "a" , "b" and "c"
 
-![Screenshot with the play again input validation](/readme-screenshots/play-again-validation.png)
+![Screenshot with the play again input validation](./assets/images/Features%20of%20Hangmann/invalidchoicefeedback.png)
+![Screenshot with the play again input validation](./assets/images/Features%20of%20Hangmann/invalidchoiceletter.png)
 
 ## Fixed Bugs 
 
@@ -362,13 +354,7 @@ Testing was performed on various aspects, such as rules display, username input 
 * All the above bugs were noticed by playing the game repeatedly whilist writing the code but also by friends that have tested it.
 
 ## Functionality
-* All links have been hovered and clicked to ensure accessibility.
-* Pages all load correctly on all device screen sizes.
-* All social media links work correctly and open on a new tab.
-* All images load on each page as intended.
-* All the buttons and links on the different pages are working correctly and bring the users to the function that they were built for.
-* The button on the Signup Page and the sections to be filled out with the requested information change the border color when hovered by the user. They are working without issues.
-* The filled out sections of the form change color when completed by the user correctly.
+
 
 
 # Bugs
@@ -442,7 +428,8 @@ To make a local clone in github, please follow the steps beow:
 
 * [Logo and Hangman Images:](https://ascii.co.uk/art/hangman)
     * The logo and Hangmanimages were gotten from the above ASCII webpage.
-* [Game rules and Leaderboard:](https://github.com/PedroCristo/portfolio_project_3)
+* [Game rules:](https://github.com/PedroCristo/portfolio_project_3)
+    * The code for the game rules display was taken from Pedro Cristo, an alumni of Code Institute.
   
 # Acknowledgements
  * Thanks to my Mentor Gareth McGirr for his assistance throughout the project.
