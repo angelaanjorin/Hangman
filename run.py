@@ -141,7 +141,7 @@ def play_game(chosen_word):
                 end_of_game = True
                 print("\tYou win!")
                 score += EXTRA_SCORE
-
+                clean()
             # check if letter is wrong.
             if guess in wrong_letter_list:
                 print(f"\tYou´ve already guessed {guess} wrongly")
@@ -155,6 +155,7 @@ def play_game(chosen_word):
                     end_of_game = True
                     print("\tYou lose.\n")
                     print(f"{Fore.YELLOW}\tThe word was {chosen_word}\n")
+                    clean()
         # check for word inputs
         elif len(guess) >= 2 and guess.isalpha():
             if guess == chosen_word:
@@ -162,6 +163,7 @@ def play_game(chosen_word):
                 print(f"{Fore.YELLOW}\tWhoohh,You have guessed the word "
                       f"{guess} already!!!\n\tYou Win!!\n")
                 score += FULL_WORD_SCORE - score
+                clean()
             elif guess in guessed_word:
                 print(f"{Fore.RED}\n\tYou´ve already guessed {guess} wrongly")
 
@@ -173,6 +175,7 @@ def play_game(chosen_word):
                     end_of_game = True
                     print("\tYou lose.\n")
                     print(f"{Fore.YELLOW}\tThe word was {chosen_word}\n")
+                    clean()
         else:
             print(f"{Fore.RED}\n\tINVALID INPUT!\n")
 
@@ -183,15 +186,19 @@ def play_game(chosen_word):
 
         # import stages of hangman
         from hangman_art import stages
-        print(stages[attempts])
+        current_stage = stages[attempts]
+        lines = current_stage.split('\n')
+        for line in lines:
+            print(f"\t{line}")
+        #print(stages[attempts])
     update_worksheet(player_name, player_city, today_date, score)
     #clean()
     repeat_game()
 
-def hangman():
-    """Get the stage corresponding to the attempts. Split each line 
-        and print a tab infront of each line.
-    """
+# def hangman():
+#     """Get the stage corresponding to the attempts. Split each line 
+#         and print a tab infront of each line.
+#     """
 # def lost_game():
 #     """End of game.
 #     """
@@ -236,7 +243,8 @@ def repeat_game():
         elif user_choice == 'C':
             typewriter("""
             You are lucky to have escaped on the oncoming train....
-            See you later, alligator...""")
+            See you later, alligator...
+            """)
             os.sys.exit()
         else:
             print('\tPlease enter a valid answer')
@@ -281,7 +289,7 @@ def display_leaderboard():
     all_data = scores.get_all_values()
     sorted_data = sorted(all_data[1:], key=lambda x: int(x[3]),
                          reverse=True)[:5]
-    header = f"{Fore.GREEN}{'Rank':<6}{'Name':<10}{'City':<15}{'Score':>10}"
+    header = f"\t{Fore.GREEN}{'Rank':<6}{'Name':<10}{'City':<15}{'Score':>10}"
     print(header)
     print(f"{Fore.YELLOW}{'='*50}\n")
     for i in range(0, len(sorted_data)):
@@ -289,7 +297,7 @@ def display_leaderboard():
         name = sorted_data[i][0].capitalize()
         score = sorted_data[i][3]
         city = sorted_data[i][1].capitalize()
-        row = f"{Fore.GREEN}{rank:<6}{name:<10}{city:<15}{score:>10}"
+        row = f"\t{Fore.GREEN}{rank:<6}{name:<10}{city:<15}{score:>10}"
         print(row)
 
     print(f"{Fore.YELLOW}\n{'='*50}\n")
