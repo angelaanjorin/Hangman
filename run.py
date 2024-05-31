@@ -27,10 +27,10 @@ scores = SHEET.worksheet('scores')
 CORRECT_LETTER_SCORE = 10
 EXTRA_SCORE = 100
 FULL_WORD_SCORE = 500
-repeat_message = f"""{Fore.CYAN}You have 3 choices:\n
-A - PLAY AGAIN
-B - LEADERBOARD
-C - ESCAPE GAME
+repeat_message = f"""{Fore.CYAN}\tYou have 3 choices:\n
+\tA - PLAY AGAIN
+\tB - LEADERBOARD
+\tC - ESCAPE GAME
 """
 chosen_word = random.choice(word_list).lower()
 word_length = len(chosen_word)
@@ -48,43 +48,48 @@ def welcome_message():
     so that they can be called in another funtion.
     """
     global player_name, player_city
-    print(f'{Fore.GREEN} {logo}')
+    print(f'{Fore.GREEN}\t{logo}')
     typewriter("""
     It is 3 am and you are lost on a deserted train station somewhere
-    on your round trip to Europe.\nSuddenly three bandits appear.... ! !""")
-    print("/n")
-    print(f"{Fore.YELLOW}And they ask.../n")
+    on your round trip to Europe.
+    Suddenly three bandits appear.... ! !""")
+    print("\n")
+    print(f"{Fore.YELLOW}\tAnd they ask...\n")
 
     # Collect player´s name and city
     if __name__ == '__main__':
         while True:
-            player_name = input(f"{Fore.CYAN}What " +
+            player_name = input(f"{Fore.CYAN}\tWhat " +
                                 "is your name?\n").strip().lower()
             if len(player_name) == 0:
-                print(f"{Fore.RED}Invalid input!")
+                print(f"{Fore.RED}\tInvalid input!")
                 continue
             else:
                 break
         while True:
-            player_city = input(f"{Fore.CYAN}What city " +
+            player_city = input(f"{Fore.CYAN}\tWhat city " +
                                 "are you originally from?:\n").strip().lower()
-            if len(player_city) == 1 and player_city.isalpha():
-                print(f"{Fore.RED}That is not a City!")
+            if len(player_city) == 0:
+                print(f"{Fore.RED}\tInvalid Input!")
                 continue
             else:
                 break
 
-    typewriter(""" You have 6 attempts to guess the city we are in now!
-    If you win, we let you go, if not you are coming with us!\n""")
+    typewriter("""
+    You have 6 attempts to guess the city we are in now!
+    If you win, we let you go, if not you are coming with us!""")
     clean()
     print(f"{Fore.CYAN} HERE ARE THE RULES: {game_info[0]}")
-    print(input("Press enter to start the game\n"))
+    print(input("\tPress enter to start the game\n"))
     clean()
 
 
 def play_game(chosen_word):
     """Main Hangman Game
     """
+    chosen_word = random.choice(word_list).lower()
+     #Testing code
+    print(f'{Fore.LIGHTMAGENTA_EX}Pssst...The chosen word is {chosen_word}.')
     # create blank
     word_length = "_" * len(chosen_word)
 
@@ -97,26 +102,26 @@ def play_game(chosen_word):
     global end_of_game
     end_of_game = False
 
-    print(f"""{Fore.YELLOW}YOU HAVE TO GUESS A WORD WITH
-{len(chosen_word)} LETTERS !""")
+    print(f"{Fore.YELLOW}\tYOU HAVE TO GUESS A WORD WITH "
+          f"{len(chosen_word)} LETTERS !")
     print('\n')
     word_dash(word_length)
     print("\n")
 
     while not end_of_game:
         if wrong_letter_list != []:
-            print(f'{Fore.RED}Wrong letters: {wrong_letter_list}')
+            print(f'{Fore.RED}\tWrong letters: {wrong_letter_list}')
             print('\n')
-        guess = input("Guess a letter or word:\n").lower()
+        guess = input("\tGuess a letter or word:  \n").lower()
         clean()
 
         if len(guess) == 1 and guess.isalpha():
             # prompts for already guessed letter
             if guess in word_length:
-                print(f"You´ve already guessed {guess} correctly")
+                print(f"\tYou´ve already guessed {guess} correctly")
 
             elif guess in chosen_word:
-                print(f"Great, {guess} is in the word!")
+                print(f"\tGreat, {guess} is in the word!")
                 correct_letters.append(guess)
                 guessed_right += 1
                 score += CORRECT_LETTER_SCORE
@@ -134,32 +139,31 @@ def play_game(chosen_word):
             # check if user has got all letters.End of game.
             if "_" not in word_as_list:
                 end_of_game = True
-                print("You win!")
+                print("\tYou win!")
                 score += EXTRA_SCORE
 
             # check if letter is wrong.
             if guess in wrong_letter_list:
-                print(f"You´ve already guessed {guess} wrongly")
+                print(f"\tYou´ve already guessed {guess} wrongly")
             elif guess not in chosen_word:
                 wrong_letter_list.append(guess)
-                print(f"You guessed {guess}, that´s not in the word.")
+                print(f"\tYou guessed {guess}, that´s not in the word.")
 
                 attempts -= 1
 
                 if attempts == 0:
                     end_of_game = True
-                    end_game()
+                    print("\tYou lose.\n")
+                    print(f"{Fore.YELLOW}\tThe word was {chosen_word}\n")
         # check for word inputs
         elif len(guess) >= 2 and guess.isalpha():
             if guess == chosen_word:
                 end_of_game = True
-                print(f"""{Fore.YELLOW}
-Whoohh,You have guessed the word {guess} already!!!
-You Win!!\n""")
+                print(f"{Fore.YELLOW}\tWhoohh,You have guessed the word "
+                      f"{guess} already!!!\n\tYou Win!!\n")
                 score += FULL_WORD_SCORE - score
-
             elif guess in guessed_word:
-                print(f"{Fore.RED}\n\t You´ve already guessed {guess} wrongly")
+                print(f"{Fore.RED}\n\tYou´ve already guessed {guess} wrongly")
 
             else:
                 print(f"{Fore.RED}\n\t{guess}, is not the Word, try again!")
@@ -167,29 +171,34 @@ You Win!!\n""")
                 guessed_word.append(guess)
                 if attempts == 0:
                     end_of_game = True
-                    end_game()
+                    print("\tYou lose.\n")
+                    print(f"{Fore.YELLOW}\tThe word was {chosen_word}\n")
         else:
-            print(f"{Fore.RED}\n\t INVALID INPUT!\n")
+            print(f"{Fore.RED}\n\tINVALID INPUT!\n")
 
         word_dash(word_length)
         print("\n")
-        print(f'Attempts left: {attempts}')
-        print(f"Score: {score}")
+        print(f'\tAttempts left: {attempts}')
+        print(f"\tScore: {score}")
 
         # import stages of hangman
         from hangman_art import stages
         print(stages[attempts])
     update_worksheet(player_name, player_city, today_date, score)
+    #clean()
     repeat_game()
 
-
-def end_game():
-    """End of game.
+def hangman():
+    """Get the stage corresponding to the attempts. Split each line 
+        and print a tab infront of each line.
     """
-    end_of_game = True
-    print("You lose.\n")
-    print(f"{Fore.YELLOW}The word was {chosen_word}\n")
-    repeat_game()
+# def lost_game():
+#     """End of game.
+#     """
+#     #end_of_game = True
+#     print("\tYou lose.\n")
+#     print(f"{Fore.YELLOW}\tThe word was {chosen_word}\n")
+#     repeat_game()
 
 
 def clean():
@@ -204,9 +213,10 @@ def clean():
 def word_dash(word_length):
     """print out empty spaces for the letters of chosen word
     """
+    print("\t", end="")
     for i in word_length:
         print(i, end=" ")
-
+    print()
 
 def repeat_game():
     """Asks the user if they want to play again or not.
@@ -215,21 +225,21 @@ def repeat_game():
         user_choice = input(f'{repeat_message}>>>').upper()
         if user_choice == 'A':
             clean()
-            print(f'{player_name.capitalize()}, ohh ' +
-'whooh you have choosen to continue playing!')
-            chosen_word = random.choice(word_list).lower()
+            print(f'\t{player_name.capitalize()}, ohh ' +
+            'whooh you have choosen to continue playing!')
+            #chosen_word = random.choice(word_list).lower()
             play_game(chosen_word)
         elif user_choice == 'B':
             clean()
-            print(f'{Fore.YELLOW}Here are the scores of the top 5 players:\n')
+            print(f'{Fore.YELLOW}\tHere are the scores of the top 5 players:\n')
             display_leaderboard()
         elif user_choice == 'C':
-            typewriter(
-            """\n You are lucky to have escaped on the oncoming train....
-See you later, alligator...\n""")
+            typewriter("""
+            You are lucky to have escaped on the oncoming train....
+            See you later, alligator...""")
             os.sys.exit()
         else:
-            print('Please enter a valid answer')
+            print('\tPlease enter a valid answer')
 
 
 def get_current_score(player_name):
@@ -255,12 +265,12 @@ def update_worksheet(player_name, player_city, today_date, new_score):
             scores.update_cell(index + 2, 4, updated_score)
             player_found = True
             current_score = get_current_score(player_name)
-            print(f'{Fore.YELLOW}Your cumulative score is: {current_score}')
+            print(f'{Fore.YELLOW}\tYour cumulative score is: {current_score}')
             break
 
     if not player_found:
         scores.append_row([player_name, player_city, today_date, new_score])
-    print("Leaderboard updated.\n")
+    print("\tLeaderboard updated.\n")
 
 
 def display_leaderboard():
