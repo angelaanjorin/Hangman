@@ -141,7 +141,7 @@ def play_game(chosen_word):
                 end_of_game = True
                 print("\tYou win!")
                 score += EXTRA_SCORE
-                clean()
+                #clean()
             # check if letter is wrong.
             if guess in wrong_letter_list:
                 print(f"\tYou´ve already guessed {guess} wrongly")
@@ -155,7 +155,7 @@ def play_game(chosen_word):
                     end_of_game = True
                     print("\tYou lose.\n")
                     print(f"{Fore.YELLOW}\tThe word was {chosen_word}\n")
-                    clean()
+                    #clean()
         # check for word inputs
         elif len(guess) >= 2 and guess.isalpha():
             if guess == chosen_word:
@@ -163,7 +163,7 @@ def play_game(chosen_word):
                 print(f"{Fore.YELLOW}\tWhoohh,You have guessed the word "
                       f"{guess} already!!!\n\tYou Win!!\n")
                 score += FULL_WORD_SCORE - score
-                clean()
+                #clean()
             elif guess in guessed_word:
                 print(f"{Fore.RED}\n\tYou´ve already guessed {guess} wrongly")
 
@@ -175,7 +175,7 @@ def play_game(chosen_word):
                     end_of_game = True
                     print("\tYou lose.\n")
                     print(f"{Fore.YELLOW}\tThe word was {chosen_word}\n")
-                    clean()
+                    #clean()
         else:
             print(f"{Fore.RED}\n\tINVALID INPUT!\n")
 
@@ -192,8 +192,8 @@ def play_game(chosen_word):
             print(f"\t{line}")
         #print(stages[attempts])
     update_worksheet(player_name, player_city, today_date, score)
-    #clean()
     repeat_game()
+    clean()
 
 # def hangman():
 #     """Get the stage corresponding to the attempts. Split each line 
@@ -291,7 +291,7 @@ def display_leaderboard():
                          reverse=True)[:5]
     header = f"\t{Fore.GREEN}{'Rank':<6}{'Name':<10}{'City':<15}{'Score':>10}"
     print(header)
-    print(f"{Fore.YELLOW}{'='*50}\n")
+    print(f"\t{Fore.YELLOW}{'='*45}\n")
     for i in range(0, len(sorted_data)):
         rank = i + 1
         name = sorted_data[i][0].capitalize()
@@ -300,7 +300,7 @@ def display_leaderboard():
         row = f"\t{Fore.GREEN}{rank:<6}{name:<10}{city:<15}{score:>10}"
         print(row)
 
-    print(f"{Fore.YELLOW}\n{'='*50}\n")
+    print(f"{Fore.YELLOW}\n\t{'='*45}\n")
 
 
 def main():
