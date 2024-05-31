@@ -191,7 +191,7 @@ At the end of the game, the player gets to choose from 3 options: to either play
 
 * At this stage the right leg is shown of the hangman.
 ### Hangman Stage 6
-![Stage 6]()
+![Stage 6](./assets/images/hangmanstages/stage6.png)
 
 * At this stage the right leg is shown of the hangman.
 
@@ -215,23 +215,32 @@ At the end of the game, the player gets to choose from 3 options: to either play
 
 * At the end of the game the player can choose to exit the game and that ends the programm.
 
-# Future Features
-## Multiple player option
-## Different word categories
+## Future Features
+### Multiple player option
+### Different word categories
 * To make the game more interesting especially for returning players, they could be asked at the beginning of the game to choose which country or nation they are lost in with a different word list partaining to cities in that country or nation. 
-## Wider range of words
-## More advanced graphics
-## Updated Scoring System
-
+### Wider range of words
+### More advanced graphics
+### Updated Scoring System
 * If a letter in the word appears more than once, the score of 10 for each correct letter should be multiplied by how many times that letter appears in the word.
 * To prevent players from inputting the whole word to get the maximum score of 500 after guessing the word and only one letter is left to guess. If there are only 2 letters left to guess of the word, the user should be prevented from guessing the whole word. 
 
-## Feedback section
+### Feedback section
 
 * The player could be asked before exiting the game if they want to leave a feedback or not. This feedback could be stored in the google worksheet.
 
-## Correction section
+### Correction section
 * If a player has misspelt thier name or city, they should be able to have a choice to change this, so that thier cumulative scores are stored under the rigth input.
+
+# Storage Data
+Google sheets was used to store player names, cities, date and scores. This worksheet is connected to the python code through the Google Drive and Google Sheet API from the Google Cloud Platform. With the Google Sheet API Credentials i was able to send data collected from the app and store it in the google sheet and display the stored data as output information for the player. The sensitive credentials were saved in a creds.jsonfile. By making sure this file´s name was in the gitignore file, it was not pushed to the repository on Github. By deploying the programme to Heroku, the information from the creds.json file was stored securely in the config Vars. 
+
+## Code to Connect to Google Sheet
+![Code to Connect to Google Sheet](./assets/images/readme/googlescope.png)
+
+## Google Sheet Hangman Leaderboard
+![Code to Connect to Google Sheet](./assets/images/readme/hangman_leaderboard-Google-Sheets.png)
+
 
 # Technolgies Used
 
@@ -240,13 +249,13 @@ At the end of the game, the player gets to choose from 3 options: to either play
 * [Python 3.12](https://www.python.org/).
 
 ## Python Packages
-* random was imported to select a random word from the word list for the game.
-* os was imported to clear the screen at different stages of the programm.
-* colorama was imported to add color to some text during running the code.
-* gspread and google auth were imported to link with the google worksheet file.
-* datetime was imported to generate the date of playing the game.
-* time: defined time sleep
-* google.oauth2.servce_account:(https://google-auth.readthedocs.io/en/stable/index.html)
+* [os] (https://docs.python.org/3/library/os.html): clears the screen at different stages of the programm.
+* [Random](https://docs.python.org/3/library/random.html?highlight=random#module-random): returns a random integer to get a random word
+* [Datetime](https://pypi.org/project/DateTime/): returns the full date
+* [Gspread](https://pypi.org/project/gspread/): allows communication with Google Sheets
+* [Colorama](https://pypi.org/project/colorama/): allows terminal text to be printed in different colours / styles
+* [Time](https://pypi.org/project/time/): defined time sleep
+* [google.oauth2.service_accoun](https://google-auth.readthedocs.io/en/stable/index.html): credentials used to validate credentials and grant access to Google service accounts
 
 ## Framewworks - Libraries - Programs Used
 * [Git](https://git-scm.com/)
@@ -265,7 +274,7 @@ At the end of the game, the player gets to choose from 3 options: to either play
     * Heroku was used to deploy the project.
 * [Google Sheets:](https://heroku.com/)
     * Google sheets was used to store the user´s inputed information, the date and to track the scores of the user.
-    You can view the Google sheets file here: [https://docs.google.com/spreadsheets/d/1a4cQ8MmqxNLSOMSEqPsuPDMlvOTl8-AqtlW-sh9tqBc/edit?usp=sharing].
+    You can view the Google sheets file [here](https://docs.google.com/spreadsheets/d/1a4cQ8MmqxNLSOMSEqPsuPDMlvOTl8-AqtlW-sh9tqBc/edit?usp=sharing).
 
 
 # Testing
@@ -274,30 +283,33 @@ At the end of the game, the player gets to choose from 3 options: to either play
 The CI Python Linter was used to validate every Python file in the project to ensure there were no syntax errors in the project.
 <details><summary>run.py - CI Python Linter Check</summary>
 
-![Screenshot of the errors for the run.py file](/readme-screenshots/run-py-linter-check.png)
+![Screenshot of the errors for the run.py file](./assets/images/readme/runpylinter.png)
 
 </details>
 
-<details><summary>words.py - CI Python Linter Check</summary>
+<details><summary>hangman_words.py - CI Python Linter Check</summary>
 
-![Screenshot of the errors for the words.py file](/readme-screenshots/words-py-linter-check.png)
-
-</details>
-
-<details><summary>style.py - CI Python Linter Check</summary>
-
-![Screenshot of the errors for the style.py file](/readme-screenshots/style-py-linter-check.png)
+![Screenshot of the errors for the hangman_words.py file](./assets/images/readme/hangmanwordlistlinter.png)
 
 </details>
 
-[W3C Markup Validator](https://validator.w3.org/#validate_by_input) 
+<details><summary>hangman_art.py - CI Python Linter Check</summary>
 
-[W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
+![Screenshot of the errors for the hangman_art.py file](./assets/images/readme/hangmanartlinter.png)
+
+</details>
+
+<details><summary>hangman_typing.py - CI Python Linter Check</summary>
+
+![Screenshot of the errors for the hangman_typing.py file](./assets/images/readme/hangmantypewriterlinter.png)
+
+</details>
+
+<details><summary>Google Lighthouse Check</summary>
 
 ![Lighthouse Results:](./assets/images/Features%20of%20Hangmann/Lighthouse-Report-Viewer.png)
 
-Google Lighthouse was used to test Performance, Best Practices, Accessibility and SEO on both Desktop and Mobile devices.
-The testing was done using the Google Chrome Browser.
+</details>
 
 
 ## Manual Testing
@@ -309,14 +321,14 @@ Testing was performed on various aspects such as:
 | ------- | ----------------| ------------ | ------------ | ----------|
 | Start Screen | To show the logo and the welcome message| None | As intended | ![Screenshot with the logo and welcome message](./assets/images/Features%20of%20Hangmann/logo%20and%20intro.png) |
 | Display Rules | To display the rules and scoring system of the game| None | As intended | ![Screenshot of the displayed rules](./assets/images/Features%20of%20Hangmann/gamerules.png) |
-| Player Name| To get player´s name and use it in the game´s messages | Insert aphanumeric player city | As intented | ![Screenshot with the playername](./assets/images/Features%20of%20Hangmann/playername.png) ![Screenshot with the personalised messages](./)|
+| Player Name| To get player´s name and use it in the game´s messages | Insert aphanumeric player city | As intented | ![Screenshot with the playername](./assets/images/Features%20of%20Hangmann/playername.png) ![Screenshot with the personalised messages](./assets/images/Features%20of%20Hangmann/nameinmessage.png)|
 | Player city| To get player´s city and store it in google worksheet | Insert aphanumeric player city | As intented | ![Screenshot with the city](./assets/images/Features%20of%20Hangmann/playernameandcity.png)
-| Guess a letter or a word | Prompts the player to guess a letter or go for the whole word | Input a letter or a word to guess | As intended | ![Screenshot of the prompt to enter a letter or a word](./assets/images/Features%20of%20Hangmann/) |
+| Guess a letter or a word | Prompts the player to guess a letter or go for the whole word | Input a letter or a word to guess | As intended | ![Screenshot of the prompt to enter a letter or a word](./assets/images/Features%20of%20Hangmann/numberoflettersofchosenword.png) |
 | Correct Guess | To display the position of the letter, the hangman with no lost attempts | Guessed a correct letter | As intended | ![Screenshot of a correct guessed letter](./assets/images/Features%20of%20Hangmann/firstletter.png)
 | Incorrect Guess | To display incorrect message, the hangman with the remaining attempts and the wrong letter list | Guessed wrong letter | As intended | ![Screenshot with the incorrect guess message](./assets/images/Features%20of%20Hangmann/wrongletterfirsttime.png) |
 | Repeated Guess | To display a message saying the input was already guessed, if wrong no penalty applied | Input a letter previously inserted | As intended | ![Screenshot of a message for a second input of a correct letter](./assets/images/Features%20of%20Hangmann/correctletterrepeatinput.png) ![A second screenshot](./assets/images/Features%20of%20Hangmann/letteralreadycorrect.png) |
 | Word Guess | To display a message saying if the word is correct or wrong | Input a word | As intended | ![Screenshot of a message for a correct word](./assets/images/Features%20of%20Hangmann/correctword.png) ![A second screenshot](./assets/images/Features%20of%20Hangmann/wordwrongfirsttime.png) ![A third screenshot](./assets/images/Features%20of%20Hangmann/wrongwordrepeat.png) |
-| Hangman Gallows | To show the updated hangman gallows | Input several letters | As intended | ![Screenshots with the gallows updating whilist inserting right or wrong letters](./assets/images/Features%20of%20Hangmann/playagain4thletter.png) ![A second screenshot](./assets/images/Features%20of%20Hangmann/twoletters.png) |
+| Hangman Stages | To show the updated hangman stages | Input several letters | As intended | ![Screenshots with the ghangman stages updating whilist inserting right or wrong letters](./assets/images/Features%20of%20Hangmann/playagain4thletter.png) ![A second screenshot](./assets/images/Features%20of%20Hangmann/stage60.png) |
 | Win The Game | To show congrats message and show the word | Guess the word in less than 6 attempts| As intended | ![Screenshot with the win message](./assets/images/Features%20of%20Hangmann/correctwordwin.png) ![Screenshot with the win message after guessing letter by letter](./assets/images/Features%20of%20Hangmann/winletterbyletter.png) |
 | Lose The Game | To show a message confirming the loss | Fail to guess in 6 attempts| As intended | ![Screenshot with the losing game message](./assets/images/Features%20of%20Hangmann/youlose.png) |
 | Play Again | To display the play again choice message | Choose between a, b or c | As intended | ![Screenshot with the play again message](./assets/images/Features%20of%20Hangmann/optiona.png) |
@@ -350,10 +362,9 @@ Testing was performed on various aspects such as:
 
 ## Fixed Bugs 
 
-* The hangman's final gallows stage did not appear when the game was lost. This have been resolved.
-* When a space was inserted at the play again stage, the error message would not show up. However, the system would repeatedly ask if the user would like to play again if a space was mistakenly inputted. This has been resolved as shown above.
-* The game would end even though the user would have guessed the letter at the last try. This has been resolved.
-* All the above bugs were noticed by playing the game repeatedly whilist writing the code but also by friends that have tested it.
+* In the initial setup of the creds.json file, by mistenkly ommiting the "s" in creds.json while writing it in the gitignore file, it was sent to the repository on Github and remained there in the history. I got alerts from Gitpod, github and an email from Google informing me of this error. Through research i was [here]( https://www.git-tower.com/learn/git/commands/git-rm), i was able to use the rm command on git to delete the creds.json file in the repository history as well as from the filesystem. I then created a new Google sheet API and Drive with a new creds.json file that i made sure to save correctly on the gitignore file. 
+*  At the initial stages of the project the complete data of players were repeatedly stored in seperate rows every time a player played a game more than once. The scores were not being added up after every game. I had to research and learn how to get the whole records of the sheet and search for the player´s name and then update  the score cell. I then had to amend this and add the city as a second search criteria incase ther were two players with the same name. 
+* It took much trail and error to use the sorted function in python to sort through all the scores and get the top five scores and display this in a table format to the user.
 
 ## Functionality
 
