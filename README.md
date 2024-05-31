@@ -70,18 +70,18 @@ The strategy principal looks at user needs, as well as product/service objective
 With the structure in place, it was then time to move onto the scope plane. This was all about developing website requirements based on the goals set out in the strategy plane. These requirements are broken down into two categories.
 
 ### Content Requirements:
-1. The user will be looking for:
-      * Information on how to play the game and the scoring system.
-      * Feedback during the game about the letters or words they input.
-      * Information about the attempts left during the game.
-      * The right word to be displayed if they lose.
-      * Information about the top player´s scores.
-      * The ability to play again to improve thier score or exit the game.
+The user will be looking for:
+    * Information on how to play the game and the scoring system.
+    * Feedback during the game about the letters or words they input.
+    * Information about the attempts left during the game.
+    * The right word to be displayed if they lose.
+    * Information about the top player´s scores.
+    * The ability to play again to improve thier score or exit the game.
 
 ### Functionality Requirements:
-1. The user will be able to:
-      * Give thier name and city.
-      * Decide if they want to play again, see the leaderboard or exit the game at the end of playing a game.
+The user will be able to:
+    * Give thier name and city.
+    * Decide if they want to play again, see the leaderboard or exit the game at the end of playing a game.
 
 ## Skeleton
 The flowchart for this project was created using[draw.io] and was a guide for the whole project.
@@ -231,7 +231,7 @@ At the end of the game, the player gets to choose from 3 options: to either play
 * The player could be asked before exiting the game if they want to leave a feedback or not. This feedback could be stored in the google worksheet.
 
 ## Correction section
-* If a player has mispelt thier name or city, they should be able to have a choice to change this, so that thier cumulative scores are stored under the rigth input.
+* If a player has misspelt thier name or city, they should be able to have a choice to change this, so that thier cumulative scores are stored under the rigth input.
 
 # Technolgies Used
 
@@ -309,29 +309,31 @@ Testing was performed on various aspects such as:
 | ------- | ----------------| ------------ | ------------ | ----------|
 | Start Screen | To show the logo and the welcome message| None | As intended | ![Screenshot with the logo and welcome message](./assets/images/Features%20of%20Hangmann/logo%20and%20intro.png) |
 | Display Rules | To display the rules and scoring system of the game| None | As intended | ![Screenshot of the displayed rules](./assets/images/Features%20of%20Hangmann/gamerules.png) |
-| Player Name | To get player´s name and store it in google worksheet | Insert alphanumeric player name | As intended | ![Screenshot of the entered username](./assets/images/Features%20of%20Hangmann/playernameandcity.png) |
-| Player Name| To get player´s name and use it in the game´s messages | Insert aphanumeric player city | As intented | ![Screenshot with the personalised messages](./) ![Another screenshot](./) |
-| Player city| To get player´s city and store it in google worksheet | Insert aphanumeric player city | As intented | ![Screenshot with the city](./)
+| Player Name| To get player´s name and use it in the game´s messages | Insert aphanumeric player city | As intented | ![Screenshot with the playername](./assets/images/Features%20of%20Hangmann/playername.png) ![Screenshot with the personalised messages](./)|
+| Player city| To get player´s city and store it in google worksheet | Insert aphanumeric player city | As intented | ![Screenshot with the city](./assets/images/Features%20of%20Hangmann/playernameandcity.png)
 | Guess a letter or a word | Prompts the player to guess a letter or go for the whole word | Input a letter or a word to guess | As intended | ![Screenshot of the prompt to enter a letter or a word](./assets/images/Features%20of%20Hangmann/) |
 | Correct Guess | To display the position of the letter, the hangman with no lost attempts | Guessed a correct letter | As intended | ![Screenshot of a correct guessed letter](./assets/images/Features%20of%20Hangmann/firstletter.png)
-| Incorrect Guess | To display incorrect message, the hangman with the remaining attempts, the list with the already insterted letted and the wrong letter list | Guessed wrong letter | As intended | ![Screenshot with the incorrect guess message](./ ) |
-| Repeated Guess | To display a message saying the input was already guessed, if wrong no penalty applied | Input a letter previously inserted | As intended | ![Screenshot of a message for a second input of a letter](./) ![A second screenshot](./assets/images/Features%20of%20Hangmann/letteralreadycorrect.png) |
+| Incorrect Guess | To display incorrect message, the hangman with the remaining attempts and the wrong letter list | Guessed wrong letter | As intended | ![Screenshot with the incorrect guess message](./assets/images/Features%20of%20Hangmann/wrongletterfirsttime.png) |
+| Repeated Guess | To display a message saying the input was already guessed, if wrong no penalty applied | Input a letter previously inserted | As intended | ![Screenshot of a message for a second input of a correct letter](./assets/images/Features%20of%20Hangmann/correctletterrepeatinput.png) ![A second screenshot](./assets/images/Features%20of%20Hangmann/letteralreadycorrect.png) |
 | Word Guess | To display a message saying if the word is correct or wrong | Input a word | As intended | ![Screenshot of a message for a correct word](./assets/images/Features%20of%20Hangmann/correctword.png) ![A second screenshot](./assets/images/Features%20of%20Hangmann/wordwrongfirsttime.png) ![A third screenshot](./assets/images/Features%20of%20Hangmann/wrongwordrepeat.png) |
 | Hangman Gallows | To show the updated hangman gallows | Input several letters | As intended | ![Screenshots with the gallows updating whilist inserting right or wrong letters](./assets/images/Features%20of%20Hangmann/playagain4thletter.png) ![A second screenshot](./assets/images/Features%20of%20Hangmann/twoletters.png) |
-| Win The Game | To show congrats message and show the word | Guess the word in less than 6 attempts| As intended | ![Screenshot with the win message](./) |
-| Lose The Game | To show a message confirming the loss | Fail to guess in 6 attempts| As intended | ![Screenshot with the losing game message](./assets/images/Features%20of%20Hangmann/) |
+| Win The Game | To show congrats message and show the word | Guess the word in less than 6 attempts| As intended | ![Screenshot with the win message](./assets/images/Features%20of%20Hangmann/correctwordwin.png) ![Screenshot with the win message after guessing letter by letter](./assets/images/Features%20of%20Hangmann/winletterbyletter.png) |
+| Lose The Game | To show a message confirming the loss | Fail to guess in 6 attempts| As intended | ![Screenshot with the losing game message](./assets/images/Features%20of%20Hangmann/youlose.png) |
 | Play Again | To display the play again choice message | Choose between a, b or c | As intended | ![Screenshot with the play again message](./assets/images/Features%20of%20Hangmann/optiona.png) |
+| Play Game Again | Game starts again | Choice A| As intended | ![Screenshot with the play again](./assets/images/Features%20of%20Hangmann/playagain.png) |
+| Leaderboard | To display the leaderboard | Choice B | As intended | ![Screenshot with the Lederboard](./assets/images/Features%20of%20Hangmann/leaderboard.png) |
+| Exit Game | Exit Game | Choice C | As intended | ![Screenshot with the exit message](./assets/images/Features%20of%20Hangmann/exit.png) |
 
 ## Input validation testing
 * Enter playername
     * Playername cannot be empty
 
-![Screenshot for Playername input validation](./)
+![Screenshot for Playername input validation](./assets/images/Features%20of%20Hangmann/invalidnameinput.png)
 
 * Enter playercity
     * Playercity cannot be empty
 
-![Screenshot for Playercity input validation](./)
+![Screenshot for Playercity input validation](./assets/images/Features%20of%20Hangmann/invalidcityinput.png)
 
 * Enter letter or word
 
@@ -340,8 +342,8 @@ Testing was performed on various aspects such as:
 
 ![Screenshot for guess input validation](./assets/images/Features%20of%20Hangmann/invalidinput.png)
 
-* Play Again
-    * Can only contain letters "a" , "b" and "c"
+* Play Again Input
+    * Can only contain letters "a" , "b" or "c"
 
 ![Screenshot with the play again input validation](./assets/images/Features%20of%20Hangmann/invalidchoicefeedback.png)
 ![Screenshot with the play again input validation](./assets/images/Features%20of%20Hangmann/invalidchoiceletter.png)
