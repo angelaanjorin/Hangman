@@ -169,7 +169,8 @@ The user will be able to:
 * Give their name and city.
 * Decide if they want to play again, see the leaderboard, or exit the game at the end of playing a game.
 
-## Flowchart <a name="flowchart"></a>
+## Skeleton:
+* The skeleton of the project was represented with a flowchart using [Draw.io](https://app.diagrams.net/) to create the flowchart.
 
 ![Image with the Hangman game flowchart ](./assets/images/readme/hangmanflowchat-drawio.png)
 
