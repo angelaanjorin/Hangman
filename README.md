@@ -367,6 +367,14 @@ Testing was performed on various aspects such as:
 * After the city input from the player, the typewriter writes a message that is cleared so fast that the message might be lost. To fix this the typewriter function in the hangman_typeing.py file had to be adjusted to include a delay time of 1 second after the for loop to display the sentences.
 
 ## Unfixed Bugs
+![PEP8 errors](./assets/images/Bugs/errorsinhangmanart.png)
+
+* The ASCII images of the hangman stages and the other created art images give errors in the CI Python Linter Checker due to the "/" forward slashes and trailing white spaces that were used to create the images. The fix would be to get PEP8 compatible ASCII images. Due to time constraint this was not implemented.
+
+![Guess more than once in chosen word](./assets/images/Features%20of%20Hangmann/twoletters.png). 
+* If a guessed letter appears more than once in the displayed chosen word, it should get a score equivalent to the amount of times it appears and not just count once like it is now in the code.
+
+* To compensate for long city names, the leaderboard shows the city name at the end of the table. No such compensation was made for possible long playername inputs. This could be coded into the welcome function to limit the amount of characters a user can input for both playername and playercity.
 
 # Deployment
 This project was developed using GitPod, committed and pushed to GitHub using a GitPod terminal.
