@@ -9,3 +9,5 @@ def typewriter(string):
         sys.stdout.write(i)
         sys.stdout.flush()
         time.sleep(0.05)
+    # Pause after printing the entire sentence
+    time.sleep(1)

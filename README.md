@@ -71,17 +71,17 @@ With the structure in place, it was then time to move onto the scope plane. This
 
 ### Content Requirements:
 The user will be looking for:
-    * Information on how to play the game and the scoring system.
-    * Feedback during the game about the letters or words they input.
-    * Information about the attempts left during the game.
-    * The right word to be displayed if they lose.
-    * Information about the top player´s scores.
-    * The ability to play again to improve thier score or exit the game.
+* Information on how to play the game and the scoring system.
+* Feedback during the game about the letters or words they input.
+* Information about the attempts left during the game.
+* The right word to be displayed if they lose.
+* Information about the top player´s scores.
+* The ability to play again to improve thier score or exit the game.
 
 ### Functionality Requirements:
 The user will be able to:
-    * Give thier name and city.
-    * Decide if they want to play again, see the leaderboard or exit the game at the end of playing a game.
+* Give thier name and city.
+* Decide if they want to play again, see the leaderboard or exit the game at the end of playing a game.
 
 ## Skeleton
 The flowchart for this project was created using[draw.io] and was a guide for the whole project.
@@ -109,7 +109,7 @@ At the end of the game, the player gets to choose from 3 options: to either play
 
 ## Logo and Welcome Information for Users
 
-![Logo](./assets/images/Features of Hangmann/logo and intro.png)
+![Logo](./assets/images/Features%20of%20Hangmann/logoandintro.png)
 
 * The logo is the first thing that the user sees. Then a story is told with a typewriteer to capture the interest and curiosity of the user. It tells them that it is 3 am and they are lost in a deserted train station when 3 bandits appear.
 [Live](https://hangmann-game-051c0aa67667.herokuapp.com/)
@@ -125,7 +125,7 @@ At the end of the game, the player gets to choose from 3 options: to either play
 * If the user presses enter without entering a name, an error message informs the user of the invalid input and they are prompted again to input thier name.
 
 ### Invalid City Input Error
-![No city input](./assets/images/Features%20of%20Hangmann/)
+![No city input](./assets/images/Features%20of%20Hangmann/invaliduserinput.png)
 
 * If the user presses enter without entering a city, an error message informs the user of the invalid input and they are prompted again to input thier city.
 
@@ -321,7 +321,7 @@ Testing was performed on various aspects such as:
 | ------- | ----------------| ------------ | ------------ | ----------|
 | Start Screen | To show the logo and the welcome message| None | As intended | ![Screenshot with the logo and welcome message](./assets/images/Features%20of%20Hangmann/logo%20and%20intro.png) |
 | Display Rules | To display the rules and scoring system of the game| None | As intended | ![Screenshot of the displayed rules](./assets/images/Features%20of%20Hangmann/gamerules.png) |
-| Player Name| To get player´s name and use it in the game´s messages | Insert aphanumeric player city | As intented | ![Screenshot with the playername](./assets/images/Features%20of%20Hangmann/playername.png) ![Screenshot with the personalised messages](./assets/images/Features%20of%20Hangmann/nameinmessage.png)|
+| Player Name| To get player´s name and use it in the game´s messages | Insert aphanumeric player city | As intented | ![Screenshot with the playername](./assets/images/Features%20of%20Hangmann/playername.png) ![Screenshot with the personalised messages](./assets/images/Features%20of%20Hangmann/namemessageplayagain.png)|
 | Player city| To get player´s city and store it in google worksheet | Insert aphanumeric player city | As intented | ![Screenshot with the city](./assets/images/Features%20of%20Hangmann/playernameandcity.png)
 | Guess a letter or a word | Prompts the player to guess a letter or go for the whole word | Input a letter or a word to guess | As intended | ![Screenshot of the prompt to enter a letter or a word](./assets/images/Features%20of%20Hangmann/numberoflettersofchosenword.png) |
 | Correct Guess | To display the position of the letter, the hangman with no lost attempts | Guessed a correct letter | As intended | ![Screenshot of a correct guessed letter](./assets/images/Features%20of%20Hangmann/firstletter.png)
@@ -337,45 +337,36 @@ Testing was performed on various aspects such as:
 | Exit Game | Exit Game | Choice C | As intended | ![Screenshot with the exit message](./assets/images/Features%20of%20Hangmann/exit.png) |
 
 ## Input validation testing
-* Enter playername
+### Enter playername
     * Playername cannot be empty
 
 ![Screenshot for Playername input validation](./assets/images/Features%20of%20Hangmann/invalidnameinput.png)
 
-* Enter playercity
+### Enter playercity
     * Playercity cannot be empty
 
 ![Screenshot for Playercity input validation](./assets/images/Features%20of%20Hangmann/invalidcityinput.png)
 
-* Enter letter or word
-
+### Enter letter or word
     * Can only contain letters
     * Can not contain numbers
 
 ![Screenshot for guess input validation](./assets/images/Features%20of%20Hangmann/invalidinput.png)
 
-* Play Again Input
+### Play Again Input
     * Can only contain letters "a" , "b" or "c"
 
 ![Screenshot with the play again input validation](./assets/images/Features%20of%20Hangmann/invalidchoicefeedback.png)
 ![Screenshot with the play again input validation](./assets/images/Features%20of%20Hangmann/invalidchoiceletter.png)
 
-## Fixed Bugs 
-
+# Bugs 
+## Fixed Bugs
 * In the initial setup of the creds.json file, by mistenkly ommiting the "s" in creds.json while writing it in the gitignore file, it was sent to the repository on Github and remained there in the history. I got alerts from Gitpod, github and an email from Google informing me of this error. Through research i was [here]( https://www.git-tower.com/learn/git/commands/git-rm), i was able to use the rm command on git to delete the creds.json file in the repository history as well as from the filesystem. I then created a new Google sheet API and Drive with a new creds.json file that i made sure to save correctly on the gitignore file. 
 *  At the initial stages of the project the complete data of players were repeatedly stored in seperate rows every time a player played a game more than once. The scores were not being added up after every game. I had to research and learn how to get the whole records of the sheet and search for the player´s name and then update  the score cell. I then had to amend this and add the city as a second search criteria incase ther were two players with the same name. 
 * It took much trail and error to use the sorted function in python to sort through all the scores and get the top five scores and display this in a table format to the user.
+* After the city input from the player, the typewriter writes a message that is cleared so fast that the message might be lost. To fix this the typewriter function in the hangman_typeing.py file had to be adjusted to include a delay time of 1 second after the for loop to display the sentences.
 
-## Functionality
-
-
-
-# Bugs
-* 
-
-
-
-# Unfixed Bugs
+## Unfixed Bugs
 
 # Deployment
 This project was developed using GitPod, committed and pushed to GitHub using a GitPod terminal.
