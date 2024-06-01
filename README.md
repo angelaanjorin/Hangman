@@ -169,9 +169,12 @@ The user will be able to:
 * Give their name and city.
 * Decide if they want to play again, see the leaderboard, or exit the game at the end of playing a game.
 
-## Skeleton
-The flowchart for this project was created using[draw.io] and was a guide for the whole project.
-dropdown menu with flowchart.
+## Flowchart <a name="flowchart"></a>
+
+![Image with the Hangman game flowchart ](./assets/images/readme/hangmanflowchat-drawio.png)
+
+[Flowchart Here ](https://drive.google.com/file/d/1Axjon_D9vPIazVU5QZqiOfiUjHXWsR2w/view?usp=sharing)
+
 
 ## Surface
 To make this game a bit more user-friendly, I used color and a typewriting technique to make the game more interesting with a background story.
@@ -455,15 +458,24 @@ Testing was performed on various aspects such as:
 * It took much trial and error to use the sorted function in Python to sort through all the scores get the top five scores and display this in a table format to the user.
 * After the city input from the player, the typewriter writes a message that is cleared so fast that the message might be lost. To fix this the typewriter function in the hangman_typeing.py file had to be adjusted to include a delay time of 1 second after the for loop to display the sentences.
 
+![Screenshot with the error of city with more than 1 word](./assets/images/Bugs/nationswithmorethanoneword.png)
+
+* Cities with more than 1 word could not be correctly displayed because the space between the words would also be counted and displayed with a blank space. This bug was sidestepped by not having any city names in the word list with more than one word.
+
 ## Unfixed Bugs
 ![PEP8 errors](./assets/images/Bugs/errorsinhangmanart.png)
 
 * The ASCII images of the hangman stages and the other created art images give errors in the CI Python Linter Checker due to the "/" forward slashes and trailing white spaces that were used to create the images. The fix would be to get PEP8-compatible ASCII images. Due to time constraints, this was not implemented.
 
 ![Guess more than once in chosen word](./assets/images/Features%20of%20Hangmann/twoletters.png). 
+
 * If a guessed letter appears more than once in the displayed chosen word, it should get a score equivalent to the number of times it appears and not just count once like it is now in the code.
 
 * To compensate for long city names, the leaderboard shows the city name at the end of the table. No such compensation was made for possible long player-name inputs. This could be coded into the welcome function to limit the number of characters a user can input for both player name and player city.
+
+![Message Text after repeat games visible](./assets/images/Bugs/messagesofplayedgamesnotclearin.png). 
+
+* After choosing to play the game again, the end messages of the games thereafter would not clear from above the screen. 
 
 # Deployment
 This project was developed using GitPod, committed, and pushed to GitHub using a GitPod terminal.
@@ -524,6 +536,7 @@ To make a local clone in GitHub, please follow the steps below:
     2. [100 days of Code by Dr. Angela Yu ](https://www.udemy.com/user/4b4368a3-b5c8-4529-aa65-2056ec31f37e/)
     3. [Portfolio Project 3 by Pedro Cristo](https://github.com/PedroCristo/portfolio_project_3)
     4. [CodeWithdar](https://github.com/CodeWithdar/python-tutorials-/blob/main/main.py)
+    5. [Portfolio Project 3 by Monica Iancu](https://github.com/Monicaular/hangman-pp3)
 
 ### Images
 
