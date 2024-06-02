@@ -476,7 +476,13 @@ Testing was performed on various aspects such as:
 
 ![Message Text after repeat games visible](./assets/images/Bugs/messagesofplayedgamesnotclearin.png). 
 
-* After choosing to play the game again, the end messages of the games thereafter would not clear from above the screen. 
+* After choosing to play the game again, the end messages of the games thereafter would not clear from above the screen. I tried plycing the clear function after the individual messages but this only cleared the screen too early and important additional information like the current scores were lost. 
+
+* The game shown on the terminal is not compatible with mobile screens. The width of the terminal is too wide. 
+The input cursor is also not visible while the keyboard is in view to type the input. 
+Another error is that spaces are wrongly accepted as inputs for the player name and city as well as for the guess input. The memory feature on the keyboard keeps inputting the previous letters or words and since the cursor is not visible, when the user presses enter, the wrong input is entered. The whole user experience on the mobile device is not satisfactory. 
+According to a relative, she could not make an input at all on her iPhone. 
+These bugs can be fixed by adjusting the code and adding the relevant code needed as media queries on the HTML and CSS files. 
 
 # Deployment
 This project was developed using GitPod, committed, and pushed to GitHub using a GitPod terminal.
