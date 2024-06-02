@@ -340,7 +340,7 @@ Google Sheets was used to store player names, cities, dates, and scores. This wo
 * [Python 3.12](https://www.python.org/).
 
 ## Python Packages
-* [os] (https://docs.python.org/3/library/os.html): clears the screen at different stages of the program.
+* [os](https://docs.python.org/3/library/os.html): clears the screen at different stages of the program.
 * [Random](https://docs.python.org/3/library/random.html?highlight=random#module-random): returns a random integer to get a random word
 * [sys](https://docs.python.org/3/library/sys.html): used for the typing function
 * [time](https://docs.python.org/3/library/time.html): returns the time
@@ -348,7 +348,7 @@ Google Sheets was used to store player names, cities, dates, and scores. This wo
 * [Gspread](https://pypi.org/project/gspread/): allows communication with Google Sheets
 * [Colorama](https://pypi.org/project/colorama/): allows terminal text to be printed in different colours / styles
 * [Time](https://pypi.org/project/time/): defined time sleep
-* [google.oauth2.service_accoun](https://google-auth.readthedocs.io/en/stable/index.html): credentials used to validate credentials and grant access to Google service accounts
+* [google.oauth2.service_account](https://google-auth.readthedocs.io/en/stable/index.html): credentials used to validate credentials and grant access to Google service accounts
 
 ## Frameworks - Libraries - Programs Used
 * [Git](https://git-scm.com/)
@@ -534,10 +534,10 @@ To make a local clone in GitHub, please follow the steps below:
 
 ## Information Sources/Resources
 
-* [Git tower:](https://www.git-tower.com/learn/git/commands/git-rm).
-* [Python:](https://www.python.org/).
-* [gspread:](https://www.gspread.org/).
-* [Code Institute:](https://learn.codeinstitute.net/).
+* [Git tower](https://www.git-tower.com/learn/git/commands/git-rm).
+* [Python](https://www.python.org/).
+* [gspread](https://www.gspread.org/).
+* [Code Institute](https://learn.codeinstitute.net/).
 * [Stack Overflow](https://stackoverflow.com/).
   
 
