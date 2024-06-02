@@ -10,7 +10,7 @@ In the "Rite of Words and Life," a criminal to be hanged was strung up over a 5 
 
 View the Hangman live game [HERE](https://hangmann-game-051c0aa67667.herokuapp.com/)
 
-![INTRO](./assets/images/readme/mainpicture.png)
+![INTRO](./assets/images/readme/homepage.png)
 
 # Table of Contents
 
@@ -478,11 +478,17 @@ Testing was performed on various aspects such as:
 
 * After choosing to play the game again, the end messages of the games thereafter would not clear from above the screen. I tried plycing the clear function after the individual messages but this only cleared the screen too early and important additional information like the current scores were lost. 
 
+![Mobiledevicebugs](./assets/images/Bugs/mobile4.jpeg). 
+
 * The game shown on the terminal is not compatible with mobile screens. The width of the terminal is too wide. 
-The input cursor is also not visible while the keyboard is in view to type the input. 
-Another error is that spaces are wrongly accepted as inputs for the player name and city as well as for the guess input. The memory feature on the keyboard keeps inputting the previous letters or words and since the cursor is not visible, when the user presses enter, the wrong input is entered. The whole user experience on the mobile device is not satisfactory. 
+The input cursor is also not visible while the keyboard is in view to type the input, as a user you have to scroll down to see the cursor. 
+Another error is that spaces are wrongly accepted as inputs for the player name and city as well as for the guess input. 
+
+![Memory feature of mobile devices](./assets/images/Bugs/mobile1.jpeg). 
+
+The memory feature on the keyboard keeps inputting the previous letters or words and since the cursor is not visible, when the user presses enter, the wrong input is entered. The whole user experience on the mobile device is not satisfactory. 
 According to a relative, she could not make an input at all on her iPhone. 
-These bugs can be fixed by adjusting the code and adding the relevant code needed as media queries on the HTML and CSS files. 
+These bugs can be fixed by adjusting the code and adding the relevant code needed as media queries on the HTML and CSS files. Due to time contriaints, these features were not yet added.
 
 # Deployment
 This project was developed using GitPod, committed, and pushed to GitHub using a GitPod terminal.
