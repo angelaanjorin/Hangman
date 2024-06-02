@@ -482,11 +482,10 @@ Testing was performed on various aspects such as:
 
 * The game shown on the terminal is not compatible with mobile screens. The width of the terminal is too wide. 
 The input cursor is also not visible while the keyboard is in view to type the input, as a user you have to scroll down to see the cursor. 
-Another error is that spaces are wrongly accepted as inputs for the player name and city as well as for the guess input. 
 
 ![Memory feature of mobile devices](./assets/images/Bugs/mobile1.jpeg). 
 
-The memory feature on the keyboard keeps inputting the previous letters or words and since the cursor is not visible, when the user presses enter, the wrong input is entered. The whole user experience on the mobile device is not satisfactory. 
+The memory feature on the keyboard keeps inputting the previous letters or words and since the cursor is not easily visible, when the user presses enter, the wrong input is entered. The whole user experience on the mobile device is not satisfactory due to these issues.
 According to a relative, she could not make an input at all on her iPhone. 
 These bugs can be fixed by adjusting the code and adding the relevant code needed as media queries on the HTML and CSS files. Due to time contriaints, these features were not yet added.
 
